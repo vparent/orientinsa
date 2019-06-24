@@ -5,7 +5,7 @@ passwordInput.value="";
 var btnValid = document.getElementById("validBtn");
 
 var pupilUsername = "qcouturi";
-var pupilPassword = "Ben63Dsm";
+var pupilPassword = "sarahconnor";
 var teacherUsername = "T-800";
 var teacherPassword = "illbeback";
 

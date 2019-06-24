@@ -5,8 +5,21 @@ h2 {
 	font-size:30px;
 }
 
+label {
+	font-family:"Sans Serif";
+	font-size:15px;
+	margin-top:5px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+img {
+	width:50px;
+	height:50px;
+}
+
 .container {
-	width:350px;
+	width:320px;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
@@ -28,6 +41,11 @@ h2 {
 	border-radius:5px;
 	margin:1px;
 	padding:5px;
+}
+
+.pupilGroupMainBlockElt {
+	display:flex;
+	flex-direction:row;
 }
 
 .pupilGroupBlockElt {
@@ -70,7 +88,18 @@ h2 {
 	flex-direction:row;
 }
 
+#pupilsPerGroup {
+	width:50px;
+}
+
 #groupValidBtn {
 	width:200px;
+	height:30px;
 	font-family:"Sans Serif";
+	border-radius:5px;
+}
+
+#validPupilsPerGroup {
+	margin-left:5px;
+	border-radius:5px;
 }
