@@ -39,8 +39,13 @@ function createPupilElt(pupil){
 			pupilElt.style.borderColor="black";
 			pupilElt.style.color="black";
 			pupil.isSelected=false;
-			if(pupil.indexInList==0){
-				if(selectedPupilsList.length==2){
+			//Let's remove it from the list!
+			selectedPupilsList.splice(selectedPupilsList.indexOf(pupil),1);
+			for(var j=0 ; j<selectedPupilsList.length ; j++){
+				selectedPupilsList[j].indexInList=j;
+			}
+			/*if(pupil.indexInList==0){
+				if(selectedPupilsList.length==pupilsPerGroup){
 					selectedPupilsList[1].indexInList=0;
 					selectedPupilsList.shift();
 					console.log(selectedPupilsList);
@@ -50,7 +55,7 @@ function createPupilElt(pupil){
 			}
 			else if(pupil.indexInList==1){
 				selectedPupilsList.pop();
-			}
+			}*/
 		}
 		else {			
 			if(selectedPupilsList.length<pupilsPerGroup){
@@ -79,7 +84,7 @@ createPupilsList();
 
 var validBtn=document.getElementById("groupValidBtn");
 validBtn.addEventListener("click",function(){
-	if(selectedPupilsList.length==2){
+	if(selectedPupilsList.length=pupilsPerGroup){
 		var pupilGroupBlockElt=document.createElement("div");
 		pupilGroupBlockElt.setAttribute("class","pupilGroupBlockElt");
 		//groupNumElt
@@ -107,7 +112,8 @@ validBtn.addEventListener("click",function(){
 			startTimeMin+=1;
 			startTimeSec=0;
 		}
-		startTimeElt.textContent=startTimeMin+"'"+startTimeSec+"''";
+		if(startTimeSec==0)	startTimeElt.textContent=startTimeMin+"'00''";
+		else startTimeElt.textContent=startTimeMin+"'"+startTimeSec+"''";
 		pupilGroupBlockElt.appendChild(startTimeElt);
 		document.getElementById("groupsList").appendChild(pupilGroupBlockElt);
 		selectedPupilsList.shift();selectedPupilsList.shift();

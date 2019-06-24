@@ -1,0 +1,37 @@
+h2 {
+	font-family:"Sans Serif";
+	font-weight:bold;
+	font-size:35px;
+	color:red;
+	margin-top:0px;
+	margin-bottom:10px;
+}
+
+button {
+	width:250px;
+	font-family:"Sans Serif";
+	font-weight:bold;
+	font-size:15px;
+	color:black;
+	border-radius:5px;
+	padding:5px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+p {
+	font-family:"Sans Serif";
+	font-size:20px;
+}
+
+span {
+	font-family:"Sans Serif";
+	font-size:20px;
+}
+
+/*#pageBlock {
+	width:300px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}*/
