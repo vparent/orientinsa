@@ -1,0 +1,33 @@
+#stopwatch {
+	display:flex;
+	flex-direction:row;
+	font-family:"Sans Serif";
+	font-size:80px;
+}
+
+#startBtn {
+	width:400px;
+	height:60px;
+	color:white;
+	background-color:green;
+	font-family:"Sans Serif";
+	font-size:30px;
+	font-weight:bold;
+	border-style:solid;
+	border-color:green;
+	border-radius:10px;
+}
+
+#endOfRace {
+	display:none;
+	width:400px;
+	height:60px;
+	color:white;
+	background-color:red;
+	font-family:"Sans Serif";
+	font-size:30px;
+	font-weight:bold;
+	border-style:solid;
+	border-color:red;
+	border-radius:10px;
+}

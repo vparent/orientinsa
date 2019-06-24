@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link href="../css/progress.css" rel="stylesheet">
+		<title>Votre progression.</title>
+	</head>
+	<body>
+		<div id="page_block">
+			<span id="parMarker">Vous venez de trouver la balise n°<span id="numMarker">0</span>!</span>
+			<div id="legend">
+				<div class="legendElt">
+					<div class="legendColor" style="background-color:white;height:20px;width:40px;"></div>
+					<span class="legendText">Balise non trouvée.</span>
+				</div>
+				<div class="legendElt">
+					<div class="legendColor" style="background-color:green;height:20px;width:40px;"></div>
+					<span class="legendText">Balise trouvée.</span>
+				</div>
+				<div class="legendElt">
+					<div class="legendColor" style="background-color:red;height:20px;width:40px;"></div>
+					<span class="legendText">Balise hors d'usage.</span>
+				</div>
+			</div>	
+			<div id="gridMarkers"></div>	
+			<script src="../js/progress.js"></script>
+		</div>
+	</body>
+</html>

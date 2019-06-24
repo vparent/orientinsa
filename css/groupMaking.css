@@ -1,0 +1,76 @@
+h2 {
+	margin:0px;
+	font-family:"Sans-Serif";
+	font-weight:bold;
+	font-size:30px;
+}
+
+.container {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-right:10px;
+	margin-left:10px;
+	padding:10px;
+	border-style:solid;
+	border-width:2px;
+	border-color:black;
+	border-radius:5px;
+}
+
+.pupilElt {
+	width:200px;
+	font-family:"Sans Serif";
+	font-weight:bold;
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	border-radius:5px;
+	margin:1px;
+	padding:5px;
+}
+
+.pupilGroupBlockElt {
+	display:flex;
+	flex-direction:row;
+	width:280px;
+	font-family:"Sans Serif";
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	border-radius:5px;
+	margin:1px;
+}
+
+.groupNumElt {
+	font-weight:bold;
+	padding:6px;
+	padding-top:13px;
+	border-right-style:solid;
+	border-right-color:black;
+	border-right-width:1px;
+}
+
+.pupilGroupElt {
+	width:190px;
+	padding:5px;
+}
+
+.startTimeElt {
+	width:40px;
+	padding:5px;
+	padding-top:13px;
+	border-left-style:solid;
+	border-left-color:black;
+	border-left-width:1px;
+}
+
+#blockPage {
+	display:flex;
+	flex-direction:row;
+}
+
+#groupValidBtn {
+	width:200px;
+	font-family:"Sans Serif";
+}

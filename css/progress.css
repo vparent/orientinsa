@@ -1,0 +1,29 @@
+.legendElt {
+	display:flex;
+	flex-direction:row;
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-right:5px;
+}
+
+.legendColor {
+	border-style:solid;
+	border-width:2px;
+}
+
+.legendText {
+	font-family:"Sans Serif";
+	font-size:20px;
+	margin-left:5px;
+}
+
+#page_block {
+	align-content:center;
+	align-items:center;
+}
+
+#parMarker {
+	font-family:"Sans Serif";
+	font-size:20px;
+	font-weight:bold;
+}

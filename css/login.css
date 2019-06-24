@@ -1,0 +1,58 @@
+h1 {
+	font-family:"Sans Serif";
+	font-size:50px;
+	font-weight:bold;
+	color:red;
+	margin:5px;
+	margin-top:10px;
+}
+
+img {
+	width:330px;
+	height:68px;
+}
+
+form {
+	display:flex;
+	flex-direction:column;
+	width:330px;
+	border-style:solid;
+	border-width:2px;
+	border-radius:10px;
+	padding:5px;
+}
+
+input {
+	width:300px;
+	height:30px;
+	font-size:20px;
+	border-style:solid;
+	border-color:black;
+	border-width:2px;
+	border-radius:15px;
+	margin:5px;
+	padding:7px;
+	padding-top:2px;
+}
+
+label {
+	font-family:"Sans Serif";
+	font-size:15px;
+	margin-top:5px;
+	margin-left:10px;
+}
+
+#validBtn {
+	width:200px;
+	height:45px;
+	font-size:30px;
+	font-weight:bold;
+	color:white;
+	font-family:"Sans Serif";
+	background-color:red;
+	border-style:solid;
+	border-color:red;
+	border-width:3px;
+	border-radius:5px;
+	margin:5px;
+}
