@@ -11,10 +11,10 @@ var pupilsList=[];
 var firstnameInput=document.getElementById("firstname");
 var lastnameInput=document.getElementById("lastname");
 var classroomInput=document.getElementById("class");
-var validBtn=document.getElementById("validBtn");
+/*var validBtn=document.getElementById("validBtn");
 
-validBtn.addEventListener("click",function(){
+validBtn.addEventListener("onclick",function(){
 	const JohnDoe = new Pupil(firstnameInput.value,lastnameInput.value,classroomInput.value);
 	pupilsList.push(JohnDoe);
 	console.log(pupilsList);
-});
+});*/
