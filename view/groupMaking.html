@@ -7,6 +7,11 @@
 	</head>
 	<body>
 		<div id="blockPage" style="display:flex;flex-direction:column;">
+			<div style="display:flex;flex-direction:row;">
+				<label for="pupilsPerGroup">Nombre d'élèves par groupe</label>
+				<input id="pupilsPerGroup" name="pupilsPerGroup" type="number" min=1 value=1>
+				<button id="validPupilsPerGroup">OK</button>
+			</div>
 			<div class="container">
 				<h2>Liste des élèves</h2>
 				<div id="listOfPupils">
