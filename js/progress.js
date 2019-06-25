@@ -16,6 +16,28 @@ var validationList=[1,-1,1,-1,-1,-1,-1,-1,-1,0,1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,1,
 var numMarker=17;
 document.getElementById("numMarker").textContent=numMarker;
 
+
+/* Creation of the legend */
+function createLegendElt(color,description){
+	var legendElt=document.createElement("div");
+	legendElt.setAttribute("class","legendElt");
+	legendElt.style.display="flex";
+	legendElt.style.flexDirection="row";
+	var legendColor=document.createElement("div");
+	legendColor.setAttribute("class","legendColor");
+	legendColor.style.backgroundColor=color;
+	legendElt.appendChild(legendColor);
+	var legendText=document.createElement("span");
+	legendText.setAttribute("class","legendText");
+	legendText.textContent=description;
+	legendElt.appendChild(legendText);
+	document.getElementById("legend").appendChild(legendElt);
+}
+createLegendElt("white","Balise non trouvée");
+createLegendElt("blue","Balise trouvée");
+createLegendElt("rgb(80,80,80)","Balise hors d'usage");
+
+
 /* Creation of the grid representing all the markers*/
 var grid=document.getElementById("gridMarkers");
 grid.style.width=String(5*(54+2*2)+5*2*5+2*10 - 5)+"px";
@@ -29,7 +51,6 @@ grid.style.alignContent="center";
 
 function createMarkerElt(k){
 	var markerElt=document.createElement("div");
-	markerElt.setAttribute("id","marker"+String(k+1));
 	markerElt.style.borderStyle="solid";
 	markerElt.style.borderWidth="3px";
 	markerElt.style.borderRadius="4px";
@@ -48,6 +69,7 @@ function createMarkerElt(k){
 	num.textContent=k+1;
 	markerElt.appendChild(num);
 	var colorBloc=document.createElement("div");
+	colorBloc.setAttribute("id","colorBloc"+String(k+1));
 	colorBloc.style.height="50px";
 	colorBloc.style.width="54px";
 	markerElt.appendChild(colorBloc);
@@ -112,18 +134,27 @@ var validBtn=document.getElementById("validBtn");
 validBtn.addEventListener("click",function(){
 	/* Step 1 : legend update */
 	var legend=document.getElementById("legend");
-	var legendEltList=document.getElementsByTagName("class","legendElt1");
-	for(var j=0; j<legendEltList.length ; j++) {
-		legend.removeChild(legendEltList[i]);
-	}
+	legend.innerHTML="";
+	/*var legendEltList=document.getElementsByClassName("legendElt");
+	var len=legendEltList.length;
+	console.log(len);
+	console.log(legendEltList);
+	for(var j=0; j<len ; j++) {
+		console.log(j);
+		console.log(legendEltList[0]);
+		legend.removeChild(legendEltList[0]);
+	}*/
+	createLegendElt("green","Balise correcte");
+	createLegendElt("red","Balise incorrecte");
+	createLegendElt("rgb(80,80,80)","Balise non trouvée ou hors d'usage");
 	/* Step 2 : markers color update */
 	for(var k=0; k<validationList.length; k++){
-		console.log("##########");
-		var markerToValid=document.getElementById("marker"+String(k+1));
-		console.log("marker"+String(k+1));
+		console.log("##############################");
+		var markerToValid=document.getElementById("colorBloc"+String(k+1));
+		console.log("colorBloc"+String(k+1));
 		console.log(markerToValid);
 		console.log(validationList[k]);
-		if(validationList[k]==-1) {console.log("GREY!"); document.getElementById("marker"+String(k+1)).style.backgroundColor="rgb(80,80,80)";}
+		if(validationList[k]==-1) {console.log("GREY!"); document.getElementById("colorBloc"+String(k+1)).style.backgroundColor="rgb(80,80,80)";}
 		else if(validationList[k]==0) {console.log("RED!"); markerToValid.style.backgroundColor="red";}
 		else if(validationList[k]==1) {console.log("GREEN!"); markerToValid.style.backgroundColor="green";}
 	}

@@ -29,8 +29,16 @@ window.onload=function(){
 }
 var validPupilsPerGroupBtn=document.getElementById("validPupilsPerGroup");
 validPupilsPerGroup.addEventListener("click",function(){
-	pupilsPerGroup=document.getElementById("pupilsPerGroup").value;
-	console.log(pupilsPerGroup);
+		pupilsPerGroup=document.getElementById("pupilsPerGroup").value;
+		console.log(pupilsPerGroup);
+		/*var containers=document.getElementsByClassName("container");
+		for(var k=0 ; k<containers.length ; k++){
+			containers[k].style.display="flex";
+		}*/
+		var groupMakingContainers=document.getElementById("groupMakingContainers");
+		groupMakingContainers.style.display="flex";
+		groupMakingContainers.style.flexDirection="column";
+		document.getElementById("nbPupilsChoiceContainer").style.display="none";
 });
 
 var groupNum=0;
@@ -77,10 +85,7 @@ function createPupilElt(pupil){
 				for(var j=0 ; j<selectedPupilsList.length ; j++){
 					selectedPupilsList[j].indexInList=j;
 				}
-				console.log(selectedPupilsList);
 				selectedPupilsList.push(pupil);
-				console.log(pupil.firstname+" "+pupil.lastname+ " has been added");
-				console.log(selectedPupilsList);
 			}
 		}
 	});
@@ -88,11 +93,11 @@ function createPupilElt(pupil){
 }
 
 function createPupilsList(){
-	var listOfPupils=document.getElementById("listOfPupils");
+	var listOfPupilsElt=document.getElementById("listOfPupils");
 	for(var i=0; i<pupilsList.length ; i++){
 		var pupil=pupilsList[i];
 		var pupilElt=createPupilElt(pupil);
-		listOfPupils.appendChild(pupilElt);
+		listOfPupilsElt.appendChild(pupilElt);
 	}
 }
 createPupilsList();
@@ -139,8 +144,8 @@ validBtn.addEventListener("click",function(){
 			var pupilElt = document.createElement("div");
 			pupilElt.textContent=(pupil.firstname+" "+pupil.lastname);
 			pupilGroupElt.appendChild(pupilElt);
-			//document.getElementById("listOfPupils").removeChild(document.getElementById(pupil.firstname+pupil.lastname));
-			document.getElementById(pupil.firstname+pupil.lastname).style.display="none";
+			document.getElementById("listOfPupils").removeChild(document.getElementById(pupil.firstname+pupil.lastname));
+			//document.getElementById(pupil.firstname+pupil.lastname).style.display="none";
 		}
 		pupilGroupBlockElt.appendChild(pupilGroupElt);
 		//startTimeElt
@@ -160,17 +165,20 @@ validBtn.addEventListener("click",function(){
 			console.log(removedGroup);
 			for(var l=0 ; l<removedGroup[0].members.length ; l++){
 				var recreatedPupil = removedGroup[0].members[l];
-				//document.getElementById("listOfPupils").appendChild(createPupilElt(recreatedPupil));
-				var unhiddenPupilElt=document.getElementById(recreatedPupil.firstname+recreatedPupil.lastname)
+				recreatedPupil.isSelected=false;
+				document.getElementById("listOfPupils").appendChild(createPupilElt(recreatedPupil));
+				/*var unhiddenPupilElt=document.getElementById(recreatedPupil.firstname+recreatedPupil.lastname)
 				unhiddenPupilElt.style.backgroundColor="white";
 				unhiddenPupilElt.style.borderColor="black";
 				unhiddenPupilElt.style.color="black";
-				unhiddenPupilElt.style.display="flex";
+				unhiddenPupilElt.textContent=recreatedPupil.firstname+" "+recreatedPupil.lastname+" "+recreatedPupil.isSelected;
+				unhiddenPupilElt.style.display="flex";*/
 				pupilGroupMainBlockElt.style.display="none";
 			}
 			var allGroupMainBlockElt=document.getElementsByClassName("pupilGroupMainBlockElt");
 			var tempStartTimeSec=0, tempStartTimeMin=0, tempGroupNum=1;
 			for(var l=0 ; l<allGroupMainBlockElt.length ; l++){
+				console.log("groupNumElt"+String(l+1));
 				if(allGroupMainBlockElt[l].style.display!="none"){
 					document.getElementById("groupNumElt"+String(l+1)).textContent=tempGroupNum;
 					if(tempStartTimeSec==0) document.getElementById("startTimeElt"+String(l+1)).textContent=tempStartTimeMin+"'00''";
@@ -184,18 +192,15 @@ validBtn.addEventListener("click",function(){
 				}
 			}
 			groupNum=allGroupMainBlockElt.length-1;
-			startTimeSec=tempStartTimeSec;
-			console.log(groupNum);
+			startTimeSec=tempStartTimeSec-15;
 		});
 		pupilGroupMainBlockElt.appendChild(imgElt);		
 		document.getElementById("groupsList").appendChild(pupilGroupMainBlockElt);
 		
 		var len=selectedPupilsList.length;
 		for(var l=0 ; l<len ; l++){
-			console.log("SHIFT");
-			selectedPupilsList.shift();
+			selectedPupilsList.pop();
 		}
-		
 	} else {
 		console.log("Pas assez d'élèves sélectionnés!");
 	}

@@ -32,7 +32,7 @@ img {
 }
 
 .pupilElt {
-	width:200px;
+	width:230px;
 	font-family:"Sans Serif";
 	font-weight:bold;
 	border-style:solid;
@@ -46,6 +46,7 @@ img {
 .pupilGroupMainBlockElt {
 	display:flex;
 	flex-direction:row;
+	align-items:center;
 }
 
 .pupilGroupBlockElt {
@@ -86,6 +87,12 @@ img {
 #blockPage {
 	display:flex;
 	flex-direction:row;
+}
+
+#nbPupilsChoiceContainer {
+	width:320px;
+	font-family:"Sans Serif";
+	font-size:18px;
 }
 
 #pupilsPerGroup {
