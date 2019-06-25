@@ -149,13 +149,9 @@ validBtn.addEventListener("click",function(){
 	createLegendElt("rgb(80,80,80)","Balise non trouvée ou hors d'usage");
 	/* Step 2 : markers color update */
 	for(var k=0; k<validationList.length; k++){
-		console.log("##############################");
 		var markerToValid=document.getElementById("colorBloc"+String(k+1));
-		console.log("colorBloc"+String(k+1));
-		console.log(markerToValid);
-		console.log(validationList[k]);
-		if(validationList[k]==-1) {console.log("GREY!"); document.getElementById("colorBloc"+String(k+1)).style.backgroundColor="rgb(80,80,80)";}
-		else if(validationList[k]==0) {console.log("RED!"); markerToValid.style.backgroundColor="red";}
-		else if(validationList[k]==1) {console.log("GREEN!"); markerToValid.style.backgroundColor="green";}
+		if(validationList[k]==-1) {markerToValid.style.backgroundColor="rgb(80,80,80)";}
+		else if(validationList[k]==0) {markerToValid.style.backgroundColor="red";}
+		else if(validationList[k]==1) {markerToValid.style.backgroundColor="green";}
 	}
 });

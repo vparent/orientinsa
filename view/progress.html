@@ -7,6 +7,11 @@
 	</head>
 	<body>
 		<div id="page_block">
+			<div style="display:flex;flex-direction:column;">
+				<span id="timeTxt">Temps restant</span>
+				<span id="time" style="display:flex;flex-direction:row"><span id="0h">0</span><span id="hours">0</span>:<span id="0m">0</span><span id="minutes">0</span>:<span id="0s">0</span><span id="seconds">0</span></span>
+				<button id="startBtn">Compte à rebours</button>
+			</div>
 			<span id="parMarker">Vous venez de trouver la balise n°<span id="numMarker">0</span>!</span>
 			<div id="legend">
 				<!--<div class="legendElt">
@@ -25,8 +30,9 @@
 			<div>
 				<div id="gridMarkers"></div>
 			</div>
-			<button id="validBtn">Valider vos résultats</button>
+			<button id="validBtn" disabled="true">Valider vos résultats</button>
 			<script src="../js/progress.js"></script>
+			<script src="../js/timeout.js"></script>
 		</div>
 	</body>
 </html>
