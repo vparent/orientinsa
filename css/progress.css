@@ -24,6 +24,21 @@
 	align-items:center;
 }
 
+#time {
+	font-family:"Sans Serif";
+	font-size:40px;
+	font-weight:bold;
+}
+
+#timeTxt {
+	font-family:"Sans Serif";
+	font-size:30px;
+}
+
+#startBtn {
+	width:200px;
+}
+
 #parMarker {
 	font-family:"Sans Serif";
 	font-size:20px;
