@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/addMarker.css">
+		<title>Ajouts de balises</title>
+	</head>
+	<body>
+		<div id="pageBlock">
+			<img src="../asset/logo_insa.png" style="">
+			<h2>Ajouter une balise</h2>
+			<form id="pupilForm">
+				<div id="latitude" style="display:flex;flex-direction:row;">
+					<span>Latitude</span>
+					<label><input type="radio" name="verticalDir" value="north" checked="checked">North</label>
+					<label><input type="radio" name="verticalDir" value="south">South</label>
+					<input class="textInput" type="text" name="degree" placeholder="00">°
+					<input class="textInput" type="text" name="minutes" placeholder="00">'
+					<input class="textInput" type="text" name="seconds" placeholder="00">''
+				</div>
+				<div id="longitude" style="display:flex;flex-direction:row;">
+					<span>Longitude</span>
+					<label><input type="radio" name="horizontalDir" value="east" checked="checked">East</label>
+					<label><input type="radio" name="horizontalDir" value="west">West</label>
+					<input class="textInput" type="text" name="degree" placeholder="00">°
+					<input class="textInput" type="text" name="minutes" placeholder="00">'
+					<input class="textInput" type="text" name="seconds" placeholder="00">''
+				</div>
+				<input id="submitBtn" type="submit" value="Ajouter">
+			</form>
+		</div>
+		<script src="../js/addMarker.js"></script>
+	</body>
+</html>

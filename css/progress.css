@@ -1,4 +1,15 @@
-.legendElt1 {
+p {
+	width:300px;
+	font-family:"Sans Serif";
+	font-size:18px;
+}
+
+img {
+	width:300px;
+	height:61px;
+}
+
+.legendElt {
 	display:flex;
 	flex-direction:row;
 	margin-top:5px;
@@ -7,6 +18,8 @@
 }
 
 .legendColor {
+	height:20px;
+	width:40px;
 	border-style:solid;
 	border-width:2px;
 }
@@ -22,6 +35,21 @@
 	align-items:center;
 }
 
+#time {
+	font-family:"Sans Serif";
+	font-size:40px;
+	font-weight:bold;
+}
+
+#timeTxt {
+	font-family:"Sans Serif";
+	font-size:30px;
+}
+
+#startBtn {
+	width:200px;
+}
+
 #parMarker {
 	font-family:"Sans Serif";
 	font-size:20px;
@@ -29,6 +57,7 @@
 }
 
 #validBtn {
+	width:360px;
 	font-family:"Sans Serif";
 	font-size:20px;
 	font-weight:bold;

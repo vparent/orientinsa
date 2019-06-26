@@ -4,6 +4,11 @@ var passwordInput = document.getElementById("password");
 passwordInput.value="";
 var btnValid = document.getElementById("validBtn");
 
+var pupilUsername = "qcouturi";
+var pupilPassword = "sarahconnor";
+var teacherUsername = "imanchon";
+var teacherPassword = "illbeback";
+
 btnValid.addEventListener("click",function login() {
 	var usernameValue=usernameInput.value;
 	var passwordValue=passwordInput.value;

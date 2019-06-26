@@ -7,20 +7,34 @@
 	</head>
 	<body>
 		<div id="blockPage" style="display:flex;flex-direction:column;">
-			<div style="display:flex;flex-direction:row;">
-				<label for="pupilsPerGroup">Nombre d'élèves par groupe</label>
-				<input id="pupilsPerGroup" name="pupilsPerGroup" type="number" min=1 value=1>
-				<button id="validPupilsPerGroup">OK</button>
-			</div>
-			<div class="container">
-				<h2>Liste des élèves</h2>
-				<div id="listOfPupils">
+			<h1>Orient'INSA</h1>
+			
+			<div id="nbPupilsChoiceContainer">
+				<p style="margin:5px;">Bienvenue dans l'espace de création des groupes. Dans un premier temps, vous devez déterminer de combien d'élèves seront composés les différents groupes.</p>
+				<div id="inputContainer" style="display:flex;flex-direction:row;margin:0px;padding:0px;">
+					<label for="pupilsPerGroup">Nombre d'élèves par groupe</label>
+					<input id="pupilsPerGroup" name="pupilsPerGroup" type="number" min=1 value=1>
+					<button id="validPupilsPerGroup">OK</button>
 				</div>
-				<button id="groupValidBtn">Valider le groupe</button>
 			</div>
-			<div class="container" id="groupsList">
-				<h2>Groupes formés</h2>
+			
+			<div id="groupMakingContainers" style="display:none;">
+				<div class="container">
+					<h2>Liste des élèves</h2>
+					<div id="listOfPupils">
+					</div>
+					<button id="groupValidBtn">Valider le groupe</button>
+				</div>
+				<div class="container" id="groupsList">
+					<h2>Groupes formés</h2>
+					<button id="groupsValid">Valider les groupes</button>
+				</div>
 			</div>
+			
+			<div id="finalGroupsContainer" style="display:none;flex-direction:column;">
+				<h2>Groupes finaux</h2>
+			</div>
+			
 		</div>
 		<script src="../js/groupMaking.js"></script>
 	</body>

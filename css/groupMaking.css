@@ -1,21 +1,38 @@
-h2 {
-	margin:0px;
-	font-family:"Sans-Serif";
+h1 {
+	font-family:"Sans Serif";
 	font-weight:bold;
-	font-size:30px;
+	font-size:40px;
+	margin-top:0px;
+	margin-bottom:10px;
+	color:red;
+}
+
+h2 {
+	font-family:"Sans Serif";
+	font-weight:bold;
+	font-size:35px;
+	margin-top:0px;
+	margin-bottom:10px;
 }
 
 label {
 	font-family:"Sans Serif";
 	font-size:15px;
 	margin-top:5px;
-	margin-left:10px;
-	margin-right:10px;
+	margin-left:2px;
+	margin-right:2px;
 }
 
 img {
 	width:50px;
 	height:50px;
+}
+
+button {
+	width:200px;
+	height:30px;
+	font-family:"Sans Serif";
+	border-radius:5px;
 }
 
 .container {
@@ -24,6 +41,7 @@ img {
 	flex-direction:column;
 	align-items:center;
 	margin:10px;
+	margin-left:5px;
 	padding:10px;
 	border-style:solid;
 	border-width:2px;
@@ -32,7 +50,7 @@ img {
 }
 
 .pupilElt {
-	width:200px;
+	width:230px;
 	font-family:"Sans Serif";
 	font-weight:bold;
 	border-style:solid;
@@ -43,15 +61,22 @@ img {
 	padding:5px;
 }
 
-.pupilGroupMainBlockElt {
+.finalPupilGroupElt {
 	display:flex;
 	flex-direction:row;
+	width:280px;
+	font-family:"Sans Serif";
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	border-radius:5px;
+	margin:1px;
 }
 
 .pupilGroupBlockElt {
 	display:flex;
 	flex-direction:row;
-	width:280px;
+	width:240px;
 	font-family:"Sans Serif";
 	border-style:solid;
 	border-color:black;
@@ -86,6 +111,12 @@ img {
 #blockPage {
 	display:flex;
 	flex-direction:row;
+}
+
+#nbPupilsChoiceContainer {
+	width:320px;
+	font-family:"Sans Serif";
+	font-size:18px;
 }
 
 #pupilsPerGroup {
