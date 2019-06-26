@@ -92,6 +92,36 @@ function createPupilElt(pupil){
 	return pupilElt;
 }
 
+function createFinalPupilGroupElt(members,num,startTime){
+	var finalPupilGroupElt=document.createElement("div");
+	finalPupilGroupElt.setAttribute("class","finalPupilGroupElt");
+	//groupNumElt
+	var groupNumElt=document.createElement("div");
+	groupNumElt.setAttribute("class","groupNumElt");
+	groupNumElt.setAttribute("id","groupNumElt"+String(groupNum));
+	groupNumElt.textContent=groupNum;
+	finalPupilGroupElt.appendChild(groupNumElt);
+	//pupilGroupElt
+	var pupilGroupElt=document.createElement("div");
+	pupilGroupElt.setAttribute("class","pupilGroupElt");
+	for(var i=0; i<members.length ; i++){
+		var pupil=members[i];
+		var pupilElt = document.createElement("div");
+		pupilElt.textContent=(pupil.firstname+" "+pupil.lastname);
+		pupilGroupElt.appendChild(pupilElt);
+		//document.getElementById("listOfPupils").removeChild(document.getElementById(pupil.firstname+pupil.lastname));
+		//document.getElementById(pupil.firstname+pupil.lastname).style.display="none";
+	}
+	finalPupilGroupElt.appendChild(pupilGroupElt);
+	//startTimeElt
+	var startTimeElt=document.createElement("div");
+	startTimeElt.setAttribute("class","startTimeElt");
+	startTimeElt.setAttribute("id","startTimeElt"+String(groupNum));
+	startTimeElt.textContent=startTime;
+	finalPupilGroupElt.appendChild(startTimeElt);
+	return finalPupilGroupElt;
+}
+
 function createPupilsList(){
 	var listOfPupilsElt=document.getElementById("listOfPupils");
 	for(var i=0; i<pupilsList.length ; i++){
@@ -107,7 +137,9 @@ validBtn.addEventListener("click",function(){
 	if(selectedPupilsList.length==pupilsPerGroup){
 		
 		//// Creation of a Group ////
-		const group = new Group(groupNum,[],startTimeTxt);
+		const group = new Group(0,[],"");
+		console.log("New group!");
+		console.log(group);
 		group.indexInGroupList=groupsList.length;
 		groupsList.push(group);
 		for(var i=0; i<selectedPupilsList.length ; i++){
@@ -115,7 +147,7 @@ validBtn.addEventListener("click",function(){
 		}
 		
 		//// Updating the variables ////
-		groupNum+=1;
+		/*groupNum+=1;
 		startTimeSec+=15;
 		if(startTimeSec==60){
 			startTimeMin+=1;
@@ -123,19 +155,11 @@ validBtn.addEventListener("click",function(){
 		}
 		var startTimeTxt="";
 		if(startTimeSec==0)	startTimeTxt=startTimeMin+"'00''";
-		else startTimeTxt=startTimeMin+"'"+startTimeSec+"''";
-	
+		else startTimeTxt=startTimeMin+"'"+startTimeSec+"''";*/
+		
 		//// Creation of the element ////
-		var pupilGroupMainBlockElt=document.createElement("div");
-		pupilGroupMainBlockElt.setAttribute("class","pupilGroupMainBlockElt");
 		var pupilGroupBlockElt=document.createElement("div");
 		pupilGroupBlockElt.setAttribute("class","pupilGroupBlockElt");
-		//groupNumElt
-		var groupNumElt=document.createElement("div");
-		groupNumElt.setAttribute("class","groupNumElt");
-		groupNumElt.setAttribute("id","groupNumElt"+String(groupNum));
-		groupNumElt.textContent=groupNum;
-		pupilGroupBlockElt.appendChild(groupNumElt);
 		//pupilGroupElt
 		var pupilGroupElt=document.createElement("div");
 		pupilGroupElt.setAttribute("class","pupilGroupElt");
@@ -148,13 +172,6 @@ validBtn.addEventListener("click",function(){
 			//document.getElementById(pupil.firstname+pupil.lastname).style.display="none";
 		}
 		pupilGroupBlockElt.appendChild(pupilGroupElt);
-		//startTimeElt
-		var startTimeElt=document.createElement("div");
-		startTimeElt.setAttribute("class","startTimeElt");
-		startTimeElt.setAttribute("id","startTimeElt"+String(groupNum));
-		startTimeElt.textContent=startTimeTxt;
-		pupilGroupBlockElt.appendChild(startTimeElt);
-		pupilGroupMainBlockElt.appendChild(pupilGroupBlockElt);
 		//imgElt
 		var imgElt=document.createElement("img");
 		imgElt.setAttribute("src","../asset/delete.png");
@@ -167,35 +184,11 @@ validBtn.addEventListener("click",function(){
 				var recreatedPupil = removedGroup[0].members[l];
 				recreatedPupil.isSelected=false;
 				document.getElementById("listOfPupils").appendChild(createPupilElt(recreatedPupil));
-				/*var unhiddenPupilElt=document.getElementById(recreatedPupil.firstname+recreatedPupil.lastname)
-				unhiddenPupilElt.style.backgroundColor="white";
-				unhiddenPupilElt.style.borderColor="black";
-				unhiddenPupilElt.style.color="black";
-				unhiddenPupilElt.textContent=recreatedPupil.firstname+" "+recreatedPupil.lastname+" "+recreatedPupil.isSelected;
-				unhiddenPupilElt.style.display="flex";*/
-				pupilGroupMainBlockElt.style.display="none";
+				pupilGroupBlockElt.style.display="none";
 			}
-			var allGroupMainBlockElt=document.getElementsByClassName("pupilGroupMainBlockElt");
-			var tempStartTimeSec=0, tempStartTimeMin=0, tempGroupNum=1;
-			for(var l=0 ; l<allGroupMainBlockElt.length ; l++){
-				console.log("groupNumElt"+String(l+1));
-				if(allGroupMainBlockElt[l].style.display!="none"){
-					document.getElementById("groupNumElt"+String(l+1)).textContent=tempGroupNum;
-					if(tempStartTimeSec==0) document.getElementById("startTimeElt"+String(l+1)).textContent=tempStartTimeMin+"'00''";
-					else  document.getElementById("startTimeElt"+String(l+1)).textContent=tempStartTimeMin+"'"+tempStartTimeSec+"''";
-					tempGroupNum+=1;
-					tempStartTimeSec+=15;
-					if(tempStartTimeSec==60){
-						tempStartTimeMin+=1;
-						tempStartTimeSec=0;
-					}
-				}
-			}
-			groupNum=allGroupMainBlockElt.length-1;
-			startTimeSec=tempStartTimeSec-15;
 		});
-		pupilGroupMainBlockElt.appendChild(imgElt);		
-		document.getElementById("groupsList").appendChild(pupilGroupMainBlockElt);
+		pupilGroupBlockElt.appendChild(imgElt);		
+		document.getElementById("groupsList").appendChild(pupilGroupBlockElt);
 		
 		var len=selectedPupilsList.length;
 		for(var l=0 ; l<len ; l++){
@@ -204,4 +197,30 @@ validBtn.addEventListener("click",function(){
 	} else {
 		console.log("Pas assez d'élèves sélectionnés!");
 	}
+});
+
+var groupsValidBtn=document.getElementById("groupsValid");
+groupsValidBtn.addEventListener("click",function(){
+	var nbUnselectedPupils=document.getElementsByClassName("pupilElt").length;
+	if (nbUnselectedPupils==0){
+		document.getElementById("groupMakingContainers").style.display="none";
+		document.getElementById("finalGroupsContainer").style.display="flex";
+		console.log(groupsList);
+		for(var j=0 ; j<groupsList.length ; j++){
+			groupNum+=1;
+			startTimeSec+=15;
+			if(startTimeSec==60){
+				startTimeMin+=1;
+				startTimeSec=0;
+			}
+			var startTimeTxt="";
+			if(startTimeSec==0)	startTimeTxt=startTimeMin+"'00''";
+			else startTimeTxt=startTimeMin+"'"+startTimeSec+"''";
+			groupsList[j].num=groupNum;
+			groupsList[j].startTime=startTimeTxt;
+			var finalGroupElt=createFinalPupilGroupElt(groupsList[j].members,groupsList[j].num,groupsList[j].startTime);
+			document.getElementById("finalGroupsContainer").appendChild(finalGroupElt);
+		}
+	}
+	else alert("Il reste des élèves à assigner");
 });
