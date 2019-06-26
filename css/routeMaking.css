@@ -29,7 +29,7 @@ label {
 button {
 	font-family:"Sans Serif";
 	font-weight:bold;
-	font-size:11px;
+	font-size:15px;
 	color:black;
 	border-radius:5px;
 	padding:3px;
@@ -46,7 +46,7 @@ button {
 	border-color:black;
 	border-width:2px;
 	border-radius:5px;
-	margin:1px;
+	margin:3px;
 }
 
 .container {
@@ -88,4 +88,8 @@ button {
 
 #nbRoutes {
 	width:55px;
+}
+
+#routeInfoPar {
+	font-size:18px;
 }
