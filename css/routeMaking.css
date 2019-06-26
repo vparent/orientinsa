@@ -1,3 +1,42 @@
+h1 {
+	font-family:"Sans Serif";
+	font-size:40px;
+	font-weight:bold;
+	color:red;
+	margin:10px;
+}
+
+h2 {
+	font-family:"Sans Serif";
+	font-size:32px;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+
+p {
+	width:300px;
+	font-family:"Sans Serif";
+	font-family:18px;
+	margin:5px;
+}
+
+label {
+	font-family:"Sans Serif";
+	font-family:18px;
+	margin:5px;
+}
+
+button {
+	font-family:"Sans Serif";
+	font-weight:bold;
+	font-size:11px;
+	color:black;
+	border-radius:5px;
+	padding:3px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
 .markerElt {
 	width:300px;
 	font-family:"Sans Serif";
@@ -8,4 +47,45 @@
 	border-width:2px;
 	border-radius:5px;
 	margin:1px;
+}
+
+.container {
+	width:320px;
+}
+
+.routeContainerElt {
+	width:300px;
+	display:flex;
+	flex-direction:column;
+	border-style:solid;
+	border-color:black;
+	border-radius:5px;
+	margin:10px;
+}
+
+.routeNameElt {
+	font-family:"Sans Serif";
+	font-size:25px;
+	font-weight:bold;
+	border-bottom-style:solid;
+	border-bottom-color:black;
+	border-bottom-width:2px;
+	text-align:center;
+}
+
+.markerInRouteElt {
+	font-family:"Sans Serif";
+	font-size:22px;
+	border-bottom-style:solid;
+	border-bottom-color:black;
+	border-bottom-width:2px;
+	text-align:center;
+}
+
+#pageBlock {
+	width:320px;
+}
+
+#nbRoutes {
+	width:55px;
 }
