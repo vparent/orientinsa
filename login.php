@@ -22,6 +22,10 @@
                 $_SESSION['password'] = $pass;
                 header('Location: http://localhost:9000/index.php');
             }
+            else
+            {
+                header('Location: http://localhost:9000/index.php');
+            }
         }
         else
         {
