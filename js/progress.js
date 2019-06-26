@@ -128,3 +128,8 @@ validBtn.addEventListener("click",function(){
 		else if(validationList[k]==1) {console.log("GREEN!"); markerToValid.style.backgroundColor="green";}
 	}
 });
+
+var deconBtn=document.getElementById("logoutBtn");
+deconBtn.addEventListener("click", function() {
+    window.location.href = "../logout.php";
+});
