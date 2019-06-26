@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/routeMaking.css">
+		<title>Création de parcours</title>
+	</head>
+	<body>
+		<div id="pageBlock">
+			<h1>Création des parcours</h1>
+			<div id="nbRoutesInput" style="display:flex;flex-direction:column;">
+				<p>Bienvenue dans la section de création de parcours de balise.	
+				Ici, vous pouvez élaborer des parcours de balises que les élèves devront parcourir. 
+				Dans un premier temps, commencez par choisir combien de parcours vous voulez créer.</p>
+				<div style="display:flex;flex-direction:row;">
+					<label for="nbRoutes">Nombre de parcours</label>
+					<input id="nbRoutes" type="number" value="2" min=1 max=6>
+					<button id="validNbRoutes" style="font-size:15px; margin:0px;">OK</button>
+				</div>
+			</div>
+			<div id="routesCreation" style="display:none;flex-direction:row;">
+				<div id="markers" style="display:flex;flex-direction:column;">
+				<p>Cliquez sur le bouton correspondant au groupe auquel vous souhaitez ajouter des balises.</p>
+					<div id="markersContainer" class="container" style="display:flex;flex-direction:column;align-items:center;">
+						<p id="routeInfoPar">Ajout de balises au parcours <span id="chosenRouteSpan">1</span></p>
+						<div id="routesButtons" style="display:flex;flex-direction:column;"></div>
+						<h2>Liste des balises</h2>
+						<div id="listOfMarkers"></div>
+					</div>
+				<div>
+				<div id="routes" style="display:flex;flex-direction:column;">
+				</div>
+			</div>
+		</div>
+		<script src="../js/routeMaking.js"></script>
+	</body>
+</html>
