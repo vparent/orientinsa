@@ -1,0 +1,11 @@
+.markerElt {
+	width:300px;
+	font-family:"Sans Serif";
+	font-size:18px;
+	text-align:center;
+	border-style:solid;
+	border-color:black;
+	border-width:2px;
+	border-radius:5px;
+	margin:1px;
+}
