@@ -62,6 +62,13 @@ class Marker {
 	}
 };
 
+class Route {
+	constructor(num,markers){
+		this.num=num; /* The number of the Route */
+		this.markers=markers; /* The list containing the markers of the Route */
+	}
+}
+
 var markersList=[]
 const marker1 = new Marker("N","44","13","36","E","11","27","3");
 markersList.push(marker1);
@@ -71,6 +78,8 @@ const marker3 = new Marker("N","19","25","6","W","37","12","31");
 markersList.push(marker3);
 const marker4 = new Marker("S","30","41","17","E","21","7","57");
 markersList.push(marker4);
+
+var routesList=[];
 
 var listOfMarkersElt=document.getElementById("listOfMarkers");
 
@@ -84,7 +93,9 @@ function createMarkerElt(marker){
 	markerEltTxt+=(marker.horizDir+" "+marker.horizDeg+"°"+marker.horizMin+"'"+marker.horizSec+"''");
 	markerElt.textContent=markerEltTxt;
 	markerElt.addEventListener("click",function(){
-		addMarkerInRoute(chosenRouteNum,markerElt.textContent);
+		//addMarkerInRoute(chosenRouteNum,markerElt.textContent);
+		addMarkerInRoute(chosenRouteNum,marker);
+		//markerElt.style.display="none";		///// DECOMMENTER POUR QUE LES BALISES CLIQUEES DISPARAISSENT /////
 		/*if(marker.isSelected){
 			markerElt.style.backgroundColor="white";
 			markerElt.style.borderColor="black";
@@ -113,6 +124,8 @@ createMarkersList();
 
 
 function createRouteContainer(num){
+	var route = new Route(num,[]);
+	routesList.push(route);
 	var routeContainerElt=document.createElement("div");
 	routeContainerElt.setAttribute("id","routeContainer"+String(num));
 	routeContainerElt.setAttribute("class","routeContainerElt");
@@ -124,11 +137,17 @@ function createRouteContainer(num){
 	document.getElementById("routes").appendChild(routeContainerElt);
 }
 
-function addMarkerInRoute(num,coords) {
+function addMarkerInRoute(num,marker) {
 	/* num : the number of the route 
 	   coords : a string given by the markerElt on which we clicked and that gives the coordinates of the corresponding marker.*/
 	var newMarker=document.createElement("div");
 	newMarker.setAttribute("class","markerInRouteElt");
+	var coords="";
+	coords+=(marker.vertDir+" "+marker.vertDeg+"°"+marker.vertMin+"'"+marker.vertSec+"''");
+	coords+="\n";
+	coords+=(marker.horizDir+" "+marker.horizDeg+"°"+marker.horizMin+"'"+marker.horizSec+"''");
+	if(!routesList[num-1].markers.includes(marker)) routesList[num-1].markers.push(marker);
+	console.log(routesList[num-1]);
 	newMarker.textContent=coords;
 	newMarker.addEventListener("click",function(){
 		this.style.display="none";
