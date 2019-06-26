@@ -31,7 +31,11 @@ input {
 }
 
 label {
+	margin-top:5px;
 	padding-left:3px;
+	/*background-color:lightgrey;
+	width:80px;
+	border-radius:3px;*/
 }
 
 #submitBtn {

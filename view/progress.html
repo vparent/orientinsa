@@ -7,32 +7,28 @@
 	</head>
 	<body>
 		<div id="page_block">
-			<div style="display:flex;flex-direction:column;">
-				<span id="timeTxt">Temps restant</span>
-				<span id="time" style="display:flex;flex-direction:row"><span id="0h">0</span><span id="hours">0</span>:<span id="0m">0</span><span id="minutes">0</span>:<span id="0s">0</span><span id="seconds">0</span></span>
-				<button id="startBtn">Compte à rebours</button>
+			<div id="raceIsNotRunning">
+				<img src="../asset/logo_insa.png">
+				<p>Bienvenue dans l'espace élève!<br/>
+				Aucune course d'orientation n'est encore en cours. Merci de patienter.</p>
+				<button id="startRace">Course lancée.</button>
 			</div>
-			<span id="parMarker">Vous venez de trouver la balise n°<span id="numMarker">0</span>!</span>
-			<div id="legend">
-				<!--<div class="legendElt">
-					<div class="legendColor""></div>
-					<span class="legendText">Balise non trouvée.</span>
+			<div id="raceIsRunning" style="display:none;flex-direction:column;">
+				<div style="display:flex;flex-direction:column;">
+					<span id="timeTxt">Temps restant</span>
+					<span id="time" style="display:flex;flex-direction:row"><span id="0h">0</span><span id="hours">0</span>:<span id="0m">0</span><span id="minutes">0</span>:<span id="0s">0</span><span id="seconds">0</span></span>
+					<!--<button id="startBtn">Compte à rebours</button>-->
 				</div>
-				<div class="legendElt">
-					<div class="legendColor"></div>
-					<span class="legendText">Balise trouvée.</span>
+				<span id="parMarker">Balise n°<span id="numMarker">0</span> trouvée!</span>
+				<div id="legend">
+				</div>	
+				<div>
+					<div id="gridMarkers"></div>
 				</div>
-				<div class="legendElt">
-					<div class="legendColor" style="background-color:rgb(80,80,80);height:20px;width:40px;"></div>
-					<span class="legendText">Balise hors d'usage.</span>
-				</div>-->
-			</div>	
-			<div>
-				<div id="gridMarkers"></div>
+				<button id="validBtn" disabled="true">Valider vos résultats</button>
 			</div>
-			<button id="validBtn" disabled="true">Valider vos résultats</button>
-			<script src="../js/progress.js"></script>
-			<script src="../js/timeout.js"></script>
 		</div>
+		<script src="../js/progress.js"></script>
+		<script src="../js/timeout.js"></script>
 	</body>
 </html>

@@ -6,7 +6,7 @@ var btnValid = document.getElementById("validBtn");
 
 var pupilUsername = "qcouturi";
 var pupilPassword = "sarahconnor";
-var teacherUsername = "T-800";
+var teacherUsername = "imanchon";
 var teacherPassword = "illbeback";
 
 btnValid.addEventListener("click",function login() {
