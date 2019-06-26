@@ -1,24 +1,49 @@
 ///// LET'S BEGIN BY CHOSING THE NUMBER OF ROUTES /////
-var colorsList=["red","blue","green","yellow","purple"];
+var colorsList=["red","blue","green","yellow","purple","darkorange"];
 var validNbRoutesBtn=document.getElementById("validNbRoutes");
 var nbRoutes=0;
 var chosenRouteNum=1;
 validNbRoutesBtn.addEventListener("click",function(){
 	nbRoutes=document.getElementById("nbRoutes").value;
+	console.log(nbRoutes);
 	document.getElementById("nbRoutesInput").style.display="none";
 	document.getElementById("routesCreation").style.display="flex";
-	for(var i=1; i<=nbRoutes ; i++) {
-		createRouteContainer(i);
+	var nbFullButtonLines=(nbRoutes-nbRoutes%3)/3;
+	console.log(nbFullButtonLines);
+	var k=0; 
+	for(var i=0; i<nbFullButtonLines ; i++){
+		var fullButtonLine=document.createElement("div");
+		for(var j=1; j<=3 ; j++) {
+			k++;
+			createRouteContainer(k);
+			var routeButton=document.createElement("button");
+			routeButton.setAttribute("id","button"+String(k));
+			routeButton.style.backgroundColor=colorsList[k-1];
+			routeButton.textContent="Parcours "+String(k);
+			routeButton.addEventListener("click",function(){
+				chosenRouteNum=Number(this.textContent[routeButton.textContent.length-1]);
+				document.getElementById("chosenRouteSpan").textContent=chosenRouteNum;
+			});
+			fullButtonLine.appendChild(routeButton);
+		}
+		fullButtonLine.setAttribute("id","fullButtonLine"+String(i));
+		document.getElementById("routesButtons").appendChild(fullButtonLine);
+	}
+	var lastButtonLine=document.createElement("div");
+	while(k<nbRoutes){
+		k++;
+		createRouteContainer(k);
 		var routeButton=document.createElement("button");
-		routeButton.setAttribute("id","button"+String(i));
-		routeButton.style.backgroundColor=colorsList[i-1];
-		routeButton.textContent="Parcours "+String(i);
+		routeButton.setAttribute("id","button"+String(k));
+		routeButton.style.backgroundColor=colorsList[k-1];
+		routeButton.textContent="Parcours "+String(k);
 		routeButton.addEventListener("click",function(){
 			chosenRouteNum=Number(this.textContent[routeButton.textContent.length-1]);
 			document.getElementById("chosenRouteSpan").textContent=chosenRouteNum;
 		});
-		document.getElementById("routesButtons").appendChild(routeButton);
+		lastButtonLine.appendChild(routeButton);
 	}
+	document.getElementById("routesButtons").appendChild(lastButtonLine);
 });
 
 

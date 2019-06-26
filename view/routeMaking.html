@@ -14,19 +14,18 @@
 				Dans un premier temps, commencez par choisir combien de parcours vous voulez créer.</p>
 				<div style="display:flex;flex-direction:row;">
 					<label for="nbRoutes">Nombre de parcours</label>
-					<input id="nbRoutes" type="number" value="2" min=1 max=4>
+					<input id="nbRoutes" type="number" value="2" min=1 max=6>
 					<button id="validNbRoutes" style="font-size:15px; margin:0px;">OK</button>
 				</div>
 			</div>
 			<div id="routesCreation" style="display:none;flex-direction:row;">
 				<div id="markers" style="display:flex;flex-direction:column;">
 				<p>Cliquez sur le bouton correspondant au groupe auquel vous souhaitez ajouter des balises.</p>
-				<h2>Liste des balises</h2>
 					<div id="markersContainer" class="container" style="display:flex;flex-direction:column;align-items:center;">
-						<div id="listOfMarkers">
-						</div>
-						<p>Ajout de balises au parcours <span id="chosenRouteSpan">1</span></p>
-						<div id="routesButtons" style="display:flex;flex-direction:row;"></div>
+						<p id="routeInfoPar">Ajout de balises au parcours <span id="chosenRouteSpan">1</span></p>
+						<div id="routesButtons" style="display:flex;flex-direction:column;"></div>
+						<h2>Liste des balises</h2>
+						<div id="listOfMarkers"></div>
 					</div>
 				<div>
 				<div id="routes" style="display:flex;flex-direction:column;">
