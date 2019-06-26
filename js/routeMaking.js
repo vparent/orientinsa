@@ -5,11 +5,9 @@ var nbRoutes=0;
 var chosenRouteNum=1;
 validNbRoutesBtn.addEventListener("click",function(){
 	nbRoutes=document.getElementById("nbRoutes").value;
-	console.log(nbRoutes);
 	document.getElementById("nbRoutesInput").style.display="none";
 	document.getElementById("routesCreation").style.display="flex";
 	var nbFullButtonLines=(nbRoutes-nbRoutes%3)/3;
-	console.log(nbFullButtonLines);
 	var k=0; 
 	for(var i=0; i<nbFullButtonLines ; i++){
 		var fullButtonLine=document.createElement("div");
@@ -23,6 +21,7 @@ validNbRoutesBtn.addEventListener("click",function(){
 			routeButton.addEventListener("click",function(){
 				chosenRouteNum=Number(this.textContent[routeButton.textContent.length-1]);
 				document.getElementById("chosenRouteSpan").textContent=chosenRouteNum;
+				document.getElementById("chosenRouteSpan").style.color=colorsList[chosenRouteNum-1];
 			});
 			fullButtonLine.appendChild(routeButton);
 		}
@@ -94,7 +93,7 @@ function createMarkerElt(marker){
 	markerElt.textContent=markerEltTxt;
 	markerElt.addEventListener("click",function(){
 		//addMarkerInRoute(chosenRouteNum,markerElt.textContent);
-		addMarkerInRoute(chosenRouteNum,marker);
+		if(!routesList[chosenRouteNum-1].markers.includes(marker))addMarkerInRoute(chosenRouteNum,marker);
 		//markerElt.style.display="none";		///// DECOMMENTER POUR QUE LES BALISES CLIQUEES DISPARAISSENT /////
 		/*if(marker.isSelected){
 			markerElt.style.backgroundColor="white";
@@ -150,6 +149,8 @@ function addMarkerInRoute(num,marker) {
 	console.log(routesList[num-1]);
 	newMarker.textContent=coords;
 	newMarker.addEventListener("click",function(){
+		console.log("YO");
+		routesList[num-1].markers.splice(routesList[num-1].markers.indexOf(marker),1)
 		this.style.display="none";
 	});
 	document.getElementById("routeContainer"+String(num)).appendChild(newMarker);
