@@ -32,29 +32,26 @@ class Route {
 var markersList=[];
 var routesList=[];
 
-const marker1 = new Marker("N","44","13","36","E","11","27","3","1");
+const marker1 = new Marker("1",true,"N","44","13","36","E","11","27","3");
 markersList.push(marker1);
-const marker2 = new Marker("S","18","32","8","W","21","7","57","2");
-marker2.isIndividual=false;
+const marker2 = new Marker("2",false,"S","18","32","8","W","21","7","57");
 markersList.push(marker2);
-const marker3 = new Marker("N","19","25","6","W","37","12","31","3");
+const marker3 = new Marker("3",false,"N","19","25","6","W","37","12","31");
 markersList.push(marker3);
-const marker4 = new Marker("S","30","41","17","E","21","7","57","4");
+const marker4 = new Marker("4",true,"S","30","41","17","E","21","7","57");
 markersList.push(marker4);
 const route1 = new Route(1,[]);
 route1.addMarker(marker1);route1.addMarker(marker2);route1.addMarker(marker3);route1.addMarker(marker4);
 routesList.push(route1);
 
-const marker5 = new Marker("S","41","23","51","W","11","27","3","5");
+const marker5 = new Marker("5",true,"S","41","23","51","W","11","27","3","5");
 markersList.push(marker5);
-marker5.isIndividual=false;
-const marker6 = new Marker("S","8","29","11","E","21","7","57","6");
+const marker6 = new Marker("6",false,"S","8","29","11","E","21","7","57","6");
 markersList.push(marker6);
-const marker7 = new Marker("N","32","20","27","E","37","12","31","7");
+const marker7 = new Marker("7",true,"N","32","20","27","E","37","12","31","7");
 markersList.push(marker7);
-const marker8 = new Marker("N","48","47","46","W","1","51","39","8");
+const marker8 = new Marker("8",true,"N","48","47","46","W","1","51","39","8");
 markersList.push(marker8);
-marker8.isIndividual=false;
 const route2 = new Route(2,[]);
 route2.addMarker(marker5);route2.addMarker(marker6);route2.addMarker(marker7);route2.addMarker(marker8);
 routesList.push(route2);
@@ -102,8 +99,8 @@ function addMarkerInRoute(num,marker) {
 	markerTypeElt.setAttribute("class","markerTypeElt");
 	if(marker.isIndividual) markerTypeElt.setAttribute("src","../asset/one_pupil.png");
 	else  markerTypeElt.setAttribute("src","../asset/two_pupil.png");
-	markerTypeElt.style.width="22px";
-	markerTypeElt.style.height="22px";
+	markerTypeElt.style.width="24px";
+	markerTypeElt.style.height="24px";
 	markerInRouteElt.appendChild(markerTypeElt);
 	
 	document.getElementById("routeContainer"+String(num)).appendChild(markerInRouteElt);
