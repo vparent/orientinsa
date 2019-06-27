@@ -43,7 +43,6 @@ button {
 	color:black;
 	border-radius:5px;
 	padding:5px;
-	margin-top:5px;
 	margin-bottom:5px;
 }
 
@@ -53,11 +52,25 @@ form {
 	border-color:black;
 	border-radius:5px;
 	padding:5px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.textInputLong {
+	width:160px;
+	margin-left:2px;
 }
 
 .textInput {
 	width:60px;
 	margin-left:2px;
+}
+
+.formContainer {
+	margin-top:10px;
+	margin-bottom:10px;
+	align-items:center;
+	align-content:center;
 }
 
 #numSpan {

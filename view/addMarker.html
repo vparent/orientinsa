@@ -9,8 +9,8 @@
 		<div id="pageBlock">
 			<img src="../asset/logo_insa.png" style="">
 			<h2>Ajouter une balise</h2>
-			<!--FORMULAIRE NORD EST-->
-			<div style="margin-top:10px;margin-bottom:5px;">
+			<!--FORMULAIRE DEGRES-->
+			<div style="margin-top:10px;margin-bottom:5px;" class="formContainer">
 				<form id="pupilForm1">
 					<div id="numberAndType1" style="display:flex;flex-direction:row;">
 						<span id="numSpan1">Numéro</span>
@@ -22,24 +22,23 @@
 						</select>
 					</div>
 					<div id="latitude1" style="display:flex;flex-direction:row;">
-						<span style="width:140px;">Latitude (Nord)</span>
-						<input id="vertDeg1" class="textInput" type="text" name="degree" placeholder="00">°
-						<input id="vertMin1" class="textInput" type="text" name="minutes" placeholder="00">'
-						<input id="vertSec1" class="textInput" type="text" name="seconds" placeholder="00">''
+						<span style="width:140px;">Latitude</span>
+						<label><input id="north1" type="radio" name="verticalDir" value="north" checked="checked">Nord</label>
+						<label><input id="south1" type="radio" name="verticalDir" value="south">Sud</label>
+						<input id="vertDeg1" class="textInputLong" type="text" name="degree" placeholder="00">°
 					</div>
 					<div id="longitude1" style="display:flex;flex-direction:row;">
-						<span style="width:140px;">Longitude (Est)</span>
-						<input id ="horizDeg1" class="textInput" type="text" name="degree" placeholder="00">°
-						<input id="horizMin1" class="textInput" type="text" name="minutes" placeholder="00">'
-						<input id="horizSec1" class="textInput" type="text" name="seconds" placeholder="00">''
+						<span style="width:140px;">Longitude</span>
+						<label><input id="east1" type="radio" name="horizontalDir" value="east" checked="checked">Est</label>
+						<label><input id="west1" type="radio" name="horizontalDir" value="west">Ouest</label>
+						<input id ="horizDeg1" class="textInputLong" type="text" name="degree" placeholder="00">°
 					</div>
-					<!--<input id="submitBtn" type="submit" value="Ajouter">-->
 				</form>
 				<button id="validBtn1" style="margin:0px;">Ajouter la balise</button>
 			</div>
 			
-			<!--FORMULAIRE NORD-SUD EST-OUEST-->
-			<div style="margin-top:10px;margin-bottom:5px;">
+			<!--FORMULAIRE DEGRES MINUTES SECONDES-->
+			<div style="margin-top:10px;margin-bottom:5px;" class="formContainer">
 				<form id="pupilForm2">
 					<div id="numberAndType2" style="display:flex;flex-direction:row;">
 						<span id="numSpan2">Numéro</span>
@@ -52,21 +51,20 @@
 					</div>
 					<div id="latitude2" style="display:flex;flex-direction:row;">
 						<span>Latitude</span>
-						<label><input id="north" type="radio" name="verticalDir" value="north" checked="checked">Nord</label>
-						<label><input id="south" type="radio" name="verticalDir" value="south">Sud</label>
+						<label><input id="north2" type="radio" name="verticalDir" value="north" checked="checked">Nord</label>
+						<label><input id="south2" type="radio" name="verticalDir" value="south">Sud</label>
 						<input id="vertDeg2" class="textInput" type="text" name="degree" placeholder="00">°
 						<input id="vertMin2" class="textInput" type="text" name="minutes" placeholder="00">'
 						<input id="vertSec2" class="textInput" type="text" name="seconds" placeholder="00">''
 					</div>
 					<div id="longitude" style="display:flex;flex-direction:row;">
 						<span>Longitude</span>
-						<label><input id="east" type="radio" name="horizontalDir" value="east" checked="checked">Est</label>
-						<label><input id="west" type="radio" name="horizontalDir" value="west">Ouest</label>
+						<label><input id="east2" type="radio" name="horizontalDir" value="east" checked="checked">Est</label>
+						<label><input id="west2" type="radio" name="horizontalDir" value="west">Ouest</label>
 						<input id ="horizDeg2" class="textInput" type="text" name="degree" placeholder="00">°
 						<input id="horizMin2" class="textInput" type="text" name="minutes" placeholder="00">'
 						<input id="horizSec2" class="textInput" type="text" name="seconds" placeholder="00">''
 					</div>
-					<!--<input id="submitBtn" type="submit" value="Ajouter">-->
 				</form>
 				<button id="validBtn2" style="margin:0px;">Ajouter la balise</button>
 			</div>
@@ -76,5 +74,5 @@
 			</div>
 		</div>
 		<script src="../js/addMarker.js"></script>
-	</body>s
+	</body>
 </html>
