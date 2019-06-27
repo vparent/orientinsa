@@ -1,8 +1,8 @@
 <?php
+
     require_once("util/dbcon.php");
 
     session_start();
-    $_SESSION['newsession'] = $value;
 
     if (!isset($_SESSION['login']) or !isset($_SESSION['password']))
     {
@@ -24,11 +24,23 @@
                     print_r($res[0]['Prenom'] . ' ' . $res[0]['Nom']);
                 }
             }
+            if (strcmp($query, 'val') == 0)
+            {
+                if (isset($_REQUEST['bid']) and isset($_REQUEST['tid']) and isset($_REQUEST['code']))
+                {
+                    $bid =  $_REQUEST['bid'];
+                    $tid =  $_REQUEST['tid'];
+                    $code = $_REQUEST['code'];
+
+                    print_r($_REQUEST);
+                }
+            }
         }
         else
         {
             /* We get the login of the user authentificated, if it is a teacher we send the user
              to  the teacherServiceChoice page, else to the progress page */
+
             $login = $_SESSION['login'];
 
             $dbstmt = $dbcon->prepare("SELECT ID FROM User NATURAL JOIN Teacher WHERE Login =

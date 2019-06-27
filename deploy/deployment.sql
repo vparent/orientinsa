@@ -21,6 +21,7 @@ CREATE TABLE Teacher (
 CREATE TABLE Tag (
     ID int NOT NULL AUTO_INCREMENT,
     GPS int,
+    Seed varchar(10),
     PRIMARY KEY (ID)
 );
 
@@ -50,18 +51,19 @@ CREATE TABLE Groups (
     PRIMARY KEY (GID, UID)
 );
 
-CREATE TABLE Participate(
-    GID int NOT NULL,
-    RID int NOT NULL,
-    FOREIGN KEY (GID) REFERENCES Groups(GID),
-    FOREIGN KEY (RID) REFERENCES Race(ID),
-    PRIMARY KEY (GID, RID)
-);
-
 CREATE TABLE Auth_device (
     ID int NOT NULL AUTO_INCREMENT,
-    Auth_key int NOT NULL,
-    PRIMARY KEY (ID, Auth_key)
+    Seed varchar(10) NOT NULL,
+    PRIMARY KEY (ID, Seed)
+);
+
+CREATE TABLE Participate(
+    UID int NOT NULL,
+    RID int NOT NULL,
+    Auth_device_ID int NOT NULL,
+    FOREIGN KEY (RID) REFERENCES Race(ID),
+    FOREIGN KEY (Auth_device_ID) REFERENCES Auth_device(ID), 
+    PRIMARY KEY (UID, RID)
 );
 
 CREATE TABLE Validation (
@@ -69,12 +71,13 @@ CREATE TABLE Validation (
     TID int NOT NULL,
     RID int NOT NULL,
     Auth_device_ID int NOT NULL,
+    Code int NOT NULL,
     Val_time DATETIME NOT NULL,
     FOREIGN KEY (UID) REFERENCES User(ID),
     FOREIGN KEY (RID) REFERENCES Race(ID),
     FOREIGN KEY (TID) REFERENCES Tag(ID),
     FOREIGN KEY (Auth_device_ID) REFERENCES Auth_device(ID),
-    PRIMARY KEY (UID, TID, RID, Auth_device_ID, Val_time)
+    PRIMARY KEY (UID, TID, RID, Auth_device_ID, Val_time, Code)
 );
 
 CREATE USER IF NOT EXISTS 'orientinsa'@'localhost' IDENTIFIED BY 'Azerty';
