@@ -47,8 +47,9 @@ validNbRoutesBtn.addEventListener("click",function(){
 
 
 ///// AFTER THE CHOICE OF THE NUMBER OF ROUTES /////
+
 class Marker {
-	constructor(vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec){
+	constructor(vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec,num){
 		this.vertDir=vertDir;
 		this.vertDeg=vertDeg;
 		this.vertMin=vertMin;
@@ -57,7 +58,12 @@ class Marker {
 		this.horizDeg=horizDeg;
 		this.horizMin=horizMin;
 		this.horizSec=horizSec;
+		
+		this.num=num; /* The number of the marker if the markers*/
+		
 		this.isSelected=false;
+		this.isIndividual=true; /* True if the marker needs to be found by only one pupil
+                                   False if it needs to be found by each member of the group */
 	}
 };
 
@@ -65,10 +71,14 @@ class Route {
 	constructor(num,markers){
 		this.num=num; /* The number of the Route */
 		this.markers=markers; /* The list containing the markers of the Route */
+		this.hasAnOrder=false; /* True if the route needs its markers to be found in a particular order, False else. */
+	}
+	addMarker(marker){
+		this.markers.push(marker);
 	}
 }
 
-var markersList=[]
+var markersList=[];
 const marker1 = new Marker("N","44","13","36","E","11","27","3");
 markersList.push(marker1);
 const marker2 = new Marker("S","18","32","8","W","21","7","57");

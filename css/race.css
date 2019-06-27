@@ -1,0 +1,105 @@
+h2 {
+	font-family:"Sans Serif";
+	font-weight:bold;
+	font-size:30px;
+	margin-bottom:2px;
+}
+
+
+/***** groupsContainer *****/
+
+.pupilGroupElt {
+	display:flex;
+	flex-direction:row;
+	width:280px;
+	font-family:"Sans Serif";
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	border-radius:5px;
+	margin:1px;
+}
+
+.pupilsElt {
+	font-family:"Sans Serif";
+	width:200px;
+	margin:1px;
+}
+
+.groupNumElt {
+	font-weight:bold;
+	padding:6px;
+	padding-top:13px;
+	border-right-style:solid;
+	border-right-color:black;
+	border-right-width:1px;
+}
+
+.startTimeElt {
+	width:40px;
+	padding:5px;
+	padding-top:13px;
+	border-left-style:solid;
+	border-left-color:black;
+	border-left-width:1px;
+}
+
+
+/***** Routes container *****/
+
+.routeContainerElt {
+	width:320px;
+	display:flex;
+	flex-direction:column;
+	border-style:solid;
+	border-color:black;
+	border-radius:5px;
+	margin:10px;
+}
+
+.routeNameElt {
+	font-family:"Sans Serif";
+	font-size:25px;
+	font-weight:bold;
+	border-bottom-style:solid;
+	border-bottom-color:black;
+	border-bottom-width:2px;
+	text-align:center;
+}
+
+.markerInRouteElt {
+	border-bottom-style:solid;
+	border-bottom-color:black;
+	border-bottom-width:2px;
+	text-align:center;
+}
+
+.markerNumElt {
+	font-family:"Sans Serif";
+	font-size:20px;
+	font-weight:bold;
+	padding-left:5px;
+	padding-right:5px;
+	border-right-style:solid;
+	border-right-color:black;
+	border-right-width:2px;
+}
+
+.markerCoordsElt {
+	width:260px;
+	font-family:"Sans Serif";
+	font-size:20px;
+	text-align:center;
+}
+
+.markerTypeElt {
+	width:30px;
+	font-family:"Sans Serif";
+	font-size:20px;
+	text-align:center;
+	padding-left:5px;
+	padding-right:5px;
+	border-left-style:solid;
+	border-left-color:black;
+	border-left-width:2px;
+}

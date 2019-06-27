@@ -5,20 +5,55 @@ h2 {
 	margin:5px;
 }
 
+img {
+	width:330px;
+	height:68px;
+}
+
 label {
-	width:70px;
+	width:80px;
 	font-family:"Sans Serif";
-	font-size:15px;
+	font-size:13px;
 }
 
 span {
-	width:80px;
+	width:100px;
 	font-family:"Sans Serif";
 	font-size:15px;
 	margin:0px;
 	padding:0px;
 }
 
+button {
+	width:250px;
+	font-family:"Sans Serif";
+	font-weight:bold;
+	font-size:13px;
+	color:black;
+	border-radius:5px;
+	padding:5px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+form {
+	width:400px;
+	border-style:solid;
+	border-color:black;
+	border-radius:5px;
+	padding:5px;
+}
+
 .textInput {
 	width:60px;
+}
+
+#numSpan {
+	width:65px;
+	margin-right:10px;
+}
+
+#typeSpan {
+	width:120px;
+	margin-left:20px;
 }

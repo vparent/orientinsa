@@ -16,9 +16,6 @@ class Group {
 		this.startTime=startTime;
 		this.indexInGroupList=-1;
 	}
-	/*function addMember(pupil){
-		members.push(pupil);
-	}*/
 };
 var groupsList = [];
 
@@ -145,17 +142,6 @@ validBtn.addEventListener("click",function(){
 		for(var i=0; i<selectedPupilsList.length ; i++){
 			group.members.push(selectedPupilsList[i]);
 		}
-		
-		//// Updating the variables ////
-		/*groupNum+=1;
-		startTimeSec+=15;
-		if(startTimeSec==60){
-			startTimeMin+=1;
-			startTimeSec=0;
-		}
-		var startTimeTxt="";
-		if(startTimeSec==0)	startTimeTxt=startTimeMin+"'00''";
-		else startTimeTxt=startTimeMin+"'"+startTimeSec+"''";*/
 		
 		//// Creation of the element ////
 		var pupilGroupBlockElt=document.createElement("div");
