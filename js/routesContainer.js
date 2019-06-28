@@ -22,7 +22,7 @@ class Route {
 	constructor(num,markers){
 		this.num=num; /* The number of the Route */
 		this.markers=markers; /* The list containing the markers of the Route */
-		this.hasAnOrder=false; /* True if the route needs its markers to be found in a particular order, False else. */
+		this.isOrdered=false; /* True if the route needs its markers to be found in a particular order, False else. */
 	}
 	addMarker(marker){
 		this.markers.push(marker);

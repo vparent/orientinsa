@@ -14,7 +14,7 @@
 				<form id="pupilForm1">
 					<div id="numberAndType1" style="display:flex;flex-direction:row;">
 						<span id="numSpan1">Numéro</span>
-						<input id="numberInput1" class="textInput" type="text" name="numberInput" placeholder="0">
+						<input id="numberInput1" class="textInput" type="text" name="numberInput" placeholder="0" required="true">
 						<span id="typeSpan1">Type de balise</span>
 						<select id="typeInput1" type="text" name="typeInput" placeholder="0">
 							<option>Individuelle
@@ -25,13 +25,13 @@
 						<span style="width:140px;">Latitude</span>
 						<label><input id="north1" type="radio" name="verticalDir" value="north" checked="checked">Nord</label>
 						<label><input id="south1" type="radio" name="verticalDir" value="south">Sud</label>
-						<input id="vertDeg1" class="textInputLong" type="text" name="degree" placeholder="00">°
+						<input id="vertDeg1" class="textInputLong" type="text" name="degree" placeholder="00" required="true">°
 					</div>
 					<div id="longitude1" style="display:flex;flex-direction:row;">
 						<span style="width:140px;">Longitude</span>
 						<label><input id="east1" type="radio" name="horizontalDir" value="east" checked="checked">Est</label>
 						<label><input id="west1" type="radio" name="horizontalDir" value="west">Ouest</label>
-						<input id ="horizDeg1" class="textInputLong" type="text" name="degree" placeholder="00">°
+						<input id ="horizDeg1" class="textInputLong" type="text" name="degree" placeholder="00" required="true">°
 					</div>
 				</form>
 				<button id="validBtn1" style="margin:0px;">Ajouter la balise</button>

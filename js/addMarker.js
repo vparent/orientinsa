@@ -30,7 +30,7 @@ function convertToDegreesMinutesSeconds(decimalDegree){
 }
 
 var validBtn1=document.getElementById("validBtn1");
-validBtn1.addEventListener("click",function(){
+validBtn1.addEventListener("click",function(event){
 	var num=document.getElementById("numberInput1").value;
 	var isIndividual;
 	if(document.getElementById("typeInput1").value=="Individuelle") isIndividual=true;
