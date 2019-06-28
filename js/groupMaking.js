@@ -27,7 +27,6 @@ window.onload=function(){
 var validPupilsPerGroupBtn=document.getElementById("validPupilsPerGroup");
 validPupilsPerGroup.addEventListener("click",function(){
 		pupilsPerGroup=document.getElementById("pupilsPerGroup").value;
-		console.log(pupilsPerGroup);
 		/*var containers=document.getElementsByClassName("container");
 		for(var k=0 ; k<containers.length ; k++){
 			containers[k].style.display="flex";
