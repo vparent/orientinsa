@@ -2,33 +2,33 @@
 
 ## Web site for the 2019 application project for tag races
 
-###Matériel nécessaire:
+### Matériel nécessaire:
 
-####Cas 1: balise offline
+#### Cas 1: balise offline
 
 Un ordinateur ou appareil semblable doté d’au moins une interface réseau sans-fil. La machine peut ne pas être connectée à Internet.
 Matériel utilisé pour les tests:: Raspberry PI 3 sous Arch Linux
 
-####Cas 2: balise online:
+#### Cas 2: balise online:
 
 Un ordinateur ou appareil accessible par Internet ou au moins dans un réseau sans-fil local. La machine doit être connectée à Internet.
 Matériel utilisé pour les tests:: Raspberry PI 3 sous Arch Linux, le smartphone utilisé pour scanner le code est connecté en wifi au point d’accès.
 
-####Logiciels nécessaires:
+#### Logiciels nécessaires:
 
 Hébergement du site web:
 Serveur HTTP, utilisé pour les test: apache v2.4
 Serveur de base de donnée, le site utilise actuellement Mariadb, il peut être adapté à un autre service de Base de Données.
 PHP v7.0 au moins
 
-###Librairies utilisées:
+### Librairies utilisées:
 
-####Javascript:
+#### Javascript:
 
 jQuery, The jQuery Fondation https://github.com/jquery/jquery
 forge, CDNJS https://github.com/digitalbazaar/forge
 
-####PHP:
+#### PHP:
 
 OTPHP, https://github.com/Spomky-Labs/otphp
 
