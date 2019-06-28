@@ -4,12 +4,12 @@ use orientinsa_db;
 
 CREATE TABLE User (
     ID int NOT NULL AUTO_INCREMENT,
+    Login varchar(10),
     GRP int,
     Nom varchar(20),
     Prenom varchar(20),
-    Login varchar(10),
     Password varchar(64),
-    PRIMARY KEY(ID)
+    PRIMARY KEY(ID, Login)
 );
 
 CREATE TABLE Teacher (
@@ -45,7 +45,7 @@ CREATE TABLE Race(
     CID int,
     Day DATETIME,
     Start DATETIME,
-    Finish DATETIME,
+    Duration int,
     PRIMARY KEY (ID),
     FOREIGN KEY (CID) REFERENCES Course(ID)
 );
