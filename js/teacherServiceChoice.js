@@ -9,6 +9,7 @@ var addPupilBtn=document.getElementById("addPupil");
 var makeGroupBtn=document.getElementById("makeGroup");
 var addMarkerBtn=document.getElementById("addMarker");
 var makeRouteBtn=document.getElementById("makeRoute");
+var raceResumeBtn=document.getElementById("raceResume");
 var raceProgressBtn=document.getElementById("raceProgress");
 var logoutBtn=document.getElementById("logoutBtn");
 
@@ -23,6 +24,9 @@ addMarkerBtn.addEventListener("click",function(){
 });
 makeRouteBtn.addEventListener("click",function(){
 	window.location.href="../view/routeMaking.html";
+});
+raceResumeBtn.addEventListener("click",function(){
+	window.location.href="../view/race.html";
 });
 raceProgressBtn.addEventListener("click",function(){
 	window.location.href="../view/teacherInterface.html";

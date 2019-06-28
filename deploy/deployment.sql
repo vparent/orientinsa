@@ -45,7 +45,7 @@ CREATE TABLE Race(
     CID int,
     Day DATETIME,
     Start DATETIME,
-    Finish DATETIME,
+    Duration int,
     PRIMARY KEY (ID),
     FOREIGN KEY (CID) REFERENCES Course(ID)
 );
