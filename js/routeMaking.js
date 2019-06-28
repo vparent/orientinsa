@@ -50,10 +50,7 @@ validNbRoutesBtn.addEventListener("click",function(){
 ///// AFTER THE CHOICE OF THE NUMBER OF ROUTES /////
 
 class Marker {
-	constructor(num,isIndividual,vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec){
-		this.num=num; /* The number of the marker if the markers*/
-		this.isIndividual=isIndividual; /* True if the marker needs to be found by only one pupil
-                                   False if it needs to be found by each member of the group */
+	constructor(vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec,num,id,isIndividual){
 		this.vertDir=vertDir;
 		this.vertDeg=vertDeg;
 		this.vertMin=vertMin;
@@ -62,6 +59,11 @@ class Marker {
 		this.horizDeg=horizDeg;
 		this.horizMin=horizMin;
 		this.horizSec=horizSec;
+
+		this.num=num; /* The number of the marker if the markers*/
+        this.id=id /* id of the marker in the database */
+		this.isIndividual=isIndividual; /* True if the marker needs to be found by only one pupil
+                                   False if it needs to be found by each member of the group */
 		
 		this.isSelected=false;
 		this.order=-1;
@@ -80,14 +82,35 @@ class Route {
 }
 
 var markersList=[];
-const marker1 = new Marker("1",true,"N","44","13","36","E","11","27","3");
-markersList.push(marker1);
-const marker2 = new Marker("2",true,"S","18","32","8","W","21","7","57");
-markersList.push(marker2);
-const marker3 = new Marker("3",false,"N","19","25","6","W","37","12","31");
-markersList.push(marker3);
-const marker4 = new Marker("4",true,"S","30","41","17","E","21","7","57");
-markersList.push(marker4);
+
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "../requestTags.php", false);
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+    {
+        var response = xhttp.responseText;
+        var resp = JSON.parse(response);
+        for (i = 0; i < resp.length; i++)
+        {
+            var deg_nb = Number(resp[i].LatDeg)
+            var ladir = "N";
+            var lodir = "E";
+            if (deg_nb < 0)
+            {
+                ladir = "S";
+            }
+            var long_nb = Number(resp[i].LongDeg);
+            if (long_nb < 0)
+            {
+                lodir = "W";
+            }
+            markersList.push(new Marker(ladir, resp[i].LatDeg, resp[i].LatMin, resp[i].LatSec,
+                lodir, resp[i].LongDeg, resp[i].LongMin, resp[i].LongSec, 1, resp[i].ID));
+        }
+        console.log(markersList);
+    }
+};
+xhttp.send();
 
 var routesList=[];
 
@@ -160,3 +183,14 @@ function addMarkerInRoute(num,marker) {
 	});
 	document.getElementById("routeContainer"+String(num)).appendChild(newMarker);
 }
+
+var validRoutesBtn=document.getElementById("validRoutes");
+validRoutesBtn.addEventListener("click", function() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../addRoute.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.onreadystatechange = function() {
+        console.log(this.responseText);
+    }
+    xhttp.send("data=" + JSON.stringify(routesList) + "&");
+});

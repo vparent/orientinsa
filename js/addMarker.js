@@ -129,7 +129,19 @@ validBtn2.addEventListener("click",function(){
 	console.log(num);console.log(isIndividual);
 	console.log(vertDir);console.log(vertDeg);console.log(vertMin);console.log(vertSec);
 	console.log(horizDir);console.log(horizDeg);console.log(horizMin);console.log(horizSec);
-	
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        console.log("send request to server");
+    }
+    if (vertDir == "S") {
+        vertDeg *= -1;
+    }
+    if (horizDir == "W") {
+        horizDeg *= -1;
+    }
+    window.location.href = "../index.php?q=addTag&nb=" + num + "&vdeg=" + vertDeg + "&vmin=" + vertMin + "&vsec=" + vertSec + "&hdeg=" + horizDeg + "&hmin=" + horizMin + "&hsec=" + horizSec + "&"
+
 	const newMarker = new Marker(num,isIndividual,vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec);
 	return newMarker;
 });

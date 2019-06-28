@@ -41,18 +41,19 @@ validPupilsPerGroup.addEventListener("click",function(){
 var groupNum=0;
 var startTimeSec=-15, startTimeMin=0;
 
-const Quentin = new Pupil("Quentin","Couturier");
-pupilsList.push(Quentin);
-const Vincent = new Pupil("Vincent","Parent");
-pupilsList.push(Vincent);
-const Boris = new Pupil("Boris","Resch");
-pupilsList.push(Boris);
-const Anthony = new Pupil("Anthony","Carado");
-pupilsList.push(Anthony);
-const Minh = new Pupil("The Minh","Bui");
-pupilsList.push(Minh);
-const Antonin = new Pupil("Antonin","Chauvet");
-pupilsList.push(Antonin);
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "../requestStudentNames.php", false);
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var response = xhttp.responseText;
+        var resp = JSON.parse(response);
+        for (i = 0; i < resp.length; i++)
+        {
+            pupilsList.push(new Pupil(resp[i].Nom, resp[i].Prenom));
+        }
+    }
+};
+xhttp.send();
 
 var selectedPupilsList=[];
 
@@ -135,8 +136,8 @@ validBtn.addEventListener("click",function(){
 		
 		//// Creation of a Group ////
 		const group = new Group(0,[],"");
-		console.log("New group!");
-		console.log(group);
+		//console.log("New group!");
+		//console.log(group);
 		group.indexInGroupList=groupsList.length;
 		groupsList.push(group);
 		for(var i=0; i<selectedPupilsList.length ; i++){
@@ -191,7 +192,7 @@ groupsValidBtn.addEventListener("click",function(){
 	if (nbUnselectedPupils==0){
 		document.getElementById("groupMakingContainers").style.display="none";
 		document.getElementById("finalGroupsContainer").style.display="flex";
-		console.log(groupsList);
+		//console.log(groupsList);
 		for(var j=0 ; j<groupsList.length ; j++){
 			groupNum+=1;
 			startTimeSec+=15;
@@ -206,7 +207,16 @@ groupsValidBtn.addEventListener("click",function(){
 			groupsList[j].startTime=startTimeTxt;
 			var finalGroupElt=createFinalPupilGroupElt(groupsList[j].members,groupsList[j].num,groupsList[j].startTime);
 			document.getElementById("finalGroupsContainer").appendChild(finalGroupElt);
+
 		}
+        /* Send the data to the server using an AJAX request */
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "../addGroup.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+            //console.log(this.responseText);
+        }
+        xhttp.send("data=" + JSON.stringify(groupsList) + "&");
 	}
 	else alert("Il reste des élèves à assigner");
 });

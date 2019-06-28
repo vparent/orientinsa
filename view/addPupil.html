@@ -9,42 +9,16 @@
 		<div id="pageBlock">
 			<img src="../asset/logo_insa.png" style="">
 			<h2>Inscrire un élève</h2>
-			<form id="pupilForm">
+			<form id="pupilForm" action="/addStudent.php" method="post">
 				<label for="firstname">Prénom</label>
 				<input id="firstname" name="firstname" type="text" placeholder="Prénom de l'élève" required/>
 				<label for="lastname">Nom</label>
 				<input id="lastname" name="lastname" type="text" placeholder="Nom de l'élève" required/>
 				<label for="class">Classe</label>
-				<input id="class" name="class" type="text" placeholder="Classe de l'élève" required/>
-				<input id="submitBtn" type="submit" value="Inscrire">
+				<input id="class" name="class" type="text" placeholder="Classe de l'élève"/>
+                <input id="submitBtn" type="submit" value="Inscrire">
 			</form>
-			<!--<button id="validBtn">Valider</button>-->
-			
-			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
-				$(document).ready(function(){
-					$("#pupilForm").submit(function(event){
-						event.preventDefault();
-						var form=$(this);
-						var formData = {
-							"firstname":$('input[name=firstname]').val(),
-							"lastname":$('input[name=lastname]').val(),
-							"class":$('input[name=class]').val()
-						};
-						$.ajax(
-							url:'localhost',
-							data:formData,
-							dataType:json,
-							type:"POST",
-							success:function(formData){
-								alert("Submission was successful!\n"+formData);
-							},
-							error:function(formData){
-								alert("An error occured!\n"+formData);
-							},
-						);
-					});			
-				});
-			</script>
+            <!-- <button id="validBtn">Valider</button> -->
 		</div>
 		<script src="../js/addPupil.js"></script>
 	</body>

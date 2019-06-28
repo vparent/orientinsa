@@ -53,7 +53,6 @@ CREATE TABLE Race(
 CREATE TABLE Groups (
     GID int NOT NULL AUTO_INCREMENT,
     UID int NOT NULL,
-    StartTime int,
     FOREIGN KEY (UID) REFERENCES User(ID),
     PRIMARY KEY (GID, UID)
 );
@@ -87,5 +86,5 @@ CREATE TABLE Validation (
     PRIMARY KEY (UID, TID, RID, Auth_device_ID, Val_time, Code)
 );
 
-CREATE USER IF NOT EXISTS 'orientinsa'@'10.0.0.1' IDENTIFIED BY 'Azerty';
-GRANT SELECT, INSERT, UPDATE, DELETE ON orientinsa_db.* TO 'orientinsa'@'10.0.0.1';
+CREATE USER IF NOT EXISTS 'orientinsa'@'localhost' IDENTIFIED BY 'Azerty';
+GRANT SELECT, INSERT, UPDATE, DELETE ON orientinsa_db.* TO 'orientinsa'@'localhost';
