@@ -51,20 +51,51 @@
           map: map,
           title: 'Point de départ'
         });
-        var marker2 = new google.maps.Marker({
+        marker.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker);
+        });
+
+        var marker1 = new google.maps.Marker({
           position: balise1,
           map: map,
           title: 'Balise1'
         });
-        var marker3 = new google.maps.Marker({
+        marker1.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker1.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker1);
+        });
+
+        var marker2 = new google.maps.Marker({
           position: balise2,
           map: map,
           title: 'Balise2'
         });
-        var marker4 = new google.maps.Marker({
+        marker2.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker2.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker2);
+        });
+
+        var marker3 = new google.maps.Marker({
           position: balise3,
           map: map,
-          title: 'Balise1'
+          title: 'Balise3'
+        });
+        marker3.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker3.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker3);
         });
 
         var flightPlanCoordinates = [
