@@ -20,6 +20,12 @@ const Boris = new Pupil("Boris","Resch",[17,21]);
 pupilsList.push(Boris);
 const Vincent = new Pupil("Vincent","Parent",[13,14,8,20]);
 pupilsList.push(Vincent);
+const Antonin = new Pupil("Antonin","Chauvet",[1,3,7,15,22]);
+pupilsList.push(Antonin);
+const Anthony = new Pupil("Anthony","Carado",[11,5,8,17,21]);
+pupilsList.push(Anthony);
+const Minh = new Pupil("The Minh","Bui",[21,13,9,5,16]);
+pupilsList.push(Minh);
 
 function createLabel(pupil){
 	var label = document.createElement("span");
