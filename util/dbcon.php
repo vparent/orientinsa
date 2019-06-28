@@ -1,5 +1,5 @@
 <?php
-    $dbn = "mysql:dbname=orientinsa_db;host=127.0.0.1";
+    $dbn = "mysql:dbname=orientinsa_db;host=10.0.0.1";
     $db_login = "orientinsa";
     $db_pass = "Azerty";
 
