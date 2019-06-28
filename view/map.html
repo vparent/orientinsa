@@ -36,7 +36,7 @@
     <script>
       var map;
       var pdp = {lat: 47.0816481, lng: 2.4156386};
-      var balise1 = {lat: 47.0828414, lng: 2.4170492};
+      var balise1 = {lat: 47.0828414, lng: 2.4170492}
       var balise2 = {lat: 47.0817783, lng: 2.4147955};
       var balise3 = {lat: 47.0824571, lng: 2.4172885};
       function initMap() {
@@ -51,27 +51,51 @@
           map: map,
           title: 'Point de départ'
         });
-        var marker2 = new google.maps.Marker({
+        marker.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker);
+        });
+
+        var marker1 = new google.maps.Marker({
           position: balise1,
           map: map,
           title: 'Balise1'
         });
-        /*google.maps.event.addListener(marker2,"click",function(){
-        	console.log("Quentin is the greatest genius ever!");
-        	var infoWindowElt=document.createElement("div");
-        	infoWindowElt.style.width="200px";
-        	infoWindowElt.style.height="100px";
-        	infoWindowElt.style.backgroundColor="blue";
-        });*/
-        var marker3 = new google.maps.Marker({
+        marker1.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker1.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker1);
+        });
+
+        var marker2 = new google.maps.Marker({
           position: balise2,
           map: map,
           title: 'Balise2'
         });
-        var marker4 = new google.maps.Marker({
+        marker2.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker2.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker2);
+        });
+
+        var marker3 = new google.maps.Marker({
           position: balise3,
           map: map,
-          title: 'Balise1'
+          title: 'Balise3'
+        });
+        marker3.addListener('click', function() {
+          var contentString ='<div id="bodyContent">'+marker3.title+'</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker3);
         });
 
         var flightPlanCoordinates = [
