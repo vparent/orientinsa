@@ -2,7 +2,7 @@
     require_once("util/dbcon.php");
 
     session_start();
-    $_SESSION['newsession'] = $value;
+    $_SESSION['newsession'] = "LOGIN";
 
     if (isset($_GET['login']) and isset($_GET['password']))
     {

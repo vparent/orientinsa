@@ -15,17 +15,24 @@
             {
                 $sname = $_POST['firstname'];
                 $name = $_POST['lastname'];
-                $class = '';
+
+                $login = strtolower($sname[0]).strtolower($name);
+                /* temporary: we define a default password, can be set to expire in the
+                    database */
+                $pass = hash('sha256', 'azerty');
+
+                $dbstmt = $dbcon->prepare("INSERT INTO User (Nom, Prenom, Login, Password)
+                     VALUES (:name, :sname, :login, :pass)");
+                $dbstmt->execute(array(':name' => $sname, ':sname' => $name, ':login' =>
+                    $login, ':pass' => $pass));
+
                 if (isset($_POST['class']))
                 {
                     $class = $_POST['class'];
+                    $dbstmt = $dbcon->prepare("UPDATE User SET GRP = :grp");
+                    $dbstmt->execute(array(':grp' => $class));
                 }
-
-                $login = strtolower($sname[0]).strtolower($name);
-
-
-                $dbstmt = $dbcon->prepare("INSERT INTO User (Nom, Prenom, Login, GRP, Password) VALUES (:name, :sname, :login, :grp, :pass)");
-                $dbstmt->execute(array(':name' => $sname, ':sname' => $name, ':login' => $login, ':grp' => $class, ':pass' => hash('sha256', 'azerty')));
+                header('Location: view/addPupil.html');
             }
         }
     }
