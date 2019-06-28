@@ -31,27 +31,46 @@ submitBtn.addEventListener("click",function(){
 
 var validBtn=document.getElementById("validBtn");
 validBtn.addEventListener("click",function(){
-	var num=document.getElementById("numberInput").value;
+    var num = 0;
+	num=document.getElementById("numberInput").value;
 	var isIndividual;
 	if(document.getElementById("typeInput").value=="Individuelle") isIndividual=true;
 	else if(document.getElementById("typeInput").value=="Collective") isIndividual=false;
-	var vertDir;
+	var vertDir="N";
 	if(document.getElementById("north").checked) vertDir="N";
 	else if(document.getElementById("south").checked) vertDir="S";
-	var vertDeg=document.getElementById("vertDeg").value;
-	var vertMin=document.getElementById("vertMin").value;
-	var vertSec=document.getElementById("vertSec").value;
-	var horizDir;
+    var vertDeg=0;
+	vertDeg=document.getElementById("vertDeg").value;
+    var vertMin=0;
+	vertMin=document.getElementById("vertMin").value;
+    var vertSec=0;
+	vertSec=document.getElementById("vertSec").value;
+	var horizDir="E";
 	if(document.getElementById("east").checked) horizDir="E";
 	else if(document.getElementById("west").checked) horizDir="W";
-	var horizDeg=document.getElementById("horizDeg").value;
-	var horizMin=document.getElementById("horizMin").value;
-	var horizSec=document.getElementById("horizSec").value;
+    var horizDeg = 0;
+	horizDeg=document.getElementById("horizDeg").value;
+    var horizMin = 0;
+	horizMin=document.getElementById("horizMin").value;
+    var horizSec = 0;
+	horizSec=document.getElementById("horizSec").value;
 	
 	console.log(num);console.log(isIndividual);
 	console.log(vertDir);console.log(vertDeg);console.log(vertMin);console.log(vertSec);
 	console.log(horizDir);console.log(horizDeg);console.log(horizMin);console.log(horizSec);
-	
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        console.log("send request to server");
+    }
+    if (vertDir == "S") {
+        vertDeg *= -1;
+    }
+    if (horizDir == "W") {
+        horizDeg *= -1;
+    }
+    window.location.href = "../index.php?q=addTag&nb=" + num + "&vdeg=" + vertDeg + "&vmin=" + vertMin + "&vsec=" + vertSec + "&hdeg=" + horizDeg + "&hmin=" + horizMin + "&hsec=" + horizSec + "&"
+
 	const newMarker = new Marker(num,isIndividual,vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec);
 	return newMarker;
 });

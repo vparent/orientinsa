@@ -7,6 +7,6 @@
         unset($_SESSION['password']);
         unset($_SESSION['newsession']);
 
-        header('Location: http://localhost:9000/index.php');
+        header('Location: index.php');
     }
 ?>

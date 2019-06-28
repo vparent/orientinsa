@@ -20,20 +20,34 @@
             {
                 $_SESSION['login'] = $login;
                 $_SESSION['password'] = $pass;
-                header('Location: http://localhost:9000/index.php');
+
+                $stmt = $dbcon->prepare("SELECT ID FROM User NATURAL JOIN Teacher WHERE Login = :login");
+                $stmt->execute(array(':login' => $_SESSION['login']));
+
+                $res = $stmt->fetchAll();
+                if (empty($res))
+                {
+                    $_SESSION["role"] = "student";
+                    header("Location: view/progress.html");
+                }
+                else
+                {
+                    $_SESSION["role"] = "teacher";
+                    header("Location: view/teacherServiceChoice.html");
+                }
             }
             else
             {
-                header('Location: http://localhost:9000/index.php');
+                header('Location: index.php');
             }
         }
         else
         {
-            header('Location: http://localhost:9000/index.php');
+            header('Location: index.php');
         }
     }
     else
     {
-        header('Location: http://localhost:9000/index.php');
+        header('Location: index.php');
     }
 ?>

@@ -2,7 +2,7 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     document.getElementById("teacherName").textContent=this.responseText;
 }
-xmlhttp.open("GET", "http://localhost:9000/index.php?q=rqstName");
+xmlhttp.open("GET", "../index.php?q=rqstName");
 xmlhttp.send();
 
 var addPupilBtn=document.getElementById("addPupil");
