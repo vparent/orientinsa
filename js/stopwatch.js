@@ -42,6 +42,7 @@ function limitTime(){
 }
 
 startBtn.addEventListener("click",function(){
+	startBtn.textContent="Course en cours...";
 	if(!running) {
 		intervalId=setInterval(increaseStopwatch,1000);
 		running=true;

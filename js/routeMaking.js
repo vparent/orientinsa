@@ -21,7 +21,8 @@ validNbRoutesBtn.addEventListener("click",function(){
 			routeButton.addEventListener("click",function(){
 				chosenRouteNum=Number(this.textContent[routeButton.textContent.length-1]);
 				document.getElementById("chosenRouteSpan").textContent=chosenRouteNum;
-				document.getElementById("chosenRouteSpan").style.color=colorsList[chosenRouteNum-1];
+				document.getElementById("routeInfoPar").style.borderStyle=solid;
+				document.getElementById("routeInfoPar").style.borderColor=colorsList[chosenRouteNum-1];
 			});
 			fullButtonLine.appendChild(routeButton);
 		}
@@ -49,7 +50,7 @@ validNbRoutesBtn.addEventListener("click",function(){
 ///// AFTER THE CHOICE OF THE NUMBER OF ROUTES /////
 
 class Marker {
-	constructor(vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec,num){
+	constructor(vertDir,vertDeg,vertMin,vertSec,horizDir,horizDeg,horizMin,horizSec,num,id,isIndividual){
 		this.vertDir=vertDir;
 		this.vertDeg=vertDeg;
 		this.vertMin=vertMin;
@@ -58,12 +59,14 @@ class Marker {
 		this.horizDeg=horizDeg;
 		this.horizMin=horizMin;
 		this.horizSec=horizSec;
-		
+
 		this.num=num; /* The number of the marker if the markers*/
+        this.id=id /* id of the marker in the database */
+		this.isIndividual=isIndividual; /* True if the marker needs to be found by only one pupil
+                                   False if it needs to be found by each member of the group */
 		
 		this.isSelected=false;
-		this.isIndividual=true; /* True if the marker needs to be found by only one pupil
-                                   False if it needs to be found by each member of the group */
+		this.order=-1;
 	}
 };
 
@@ -71,7 +74,7 @@ class Route {
 	constructor(num,markers){
 		this.num=num; /* The number of the Route */
 		this.markers=markers; /* The list containing the markers of the Route */
-		this.hasAnOrder=false; /* True if the route needs its markers to be found in a particular order, False else. */
+		this.isOrdered=false; /* True if the route needs its markers to be found in a particular order, False else. */
 	}
 	addMarker(marker){
 		this.markers.push(marker);
@@ -79,14 +82,35 @@ class Route {
 }
 
 var markersList=[];
-const marker1 = new Marker("N","44","13","36","E","11","27","3");
-markersList.push(marker1);
-const marker2 = new Marker("S","18","32","8","W","21","7","57");
-markersList.push(marker2);
-const marker3 = new Marker("N","19","25","6","W","37","12","31");
-markersList.push(marker3);
-const marker4 = new Marker("S","30","41","17","E","21","7","57");
-markersList.push(marker4);
+
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "../requestTags.php", false);
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+    {
+        var response = xhttp.responseText;
+        var resp = JSON.parse(response);
+        for (i = 0; i < resp.length; i++)
+        {
+            var deg_nb = Number(resp[i].LatDeg)
+            var ladir = "N";
+            var lodir = "E";
+            if (deg_nb < 0)
+            {
+                ladir = "S";
+            }
+            var long_nb = Number(resp[i].LongDeg);
+            if (long_nb < 0)
+            {
+                lodir = "W";
+            }
+            markersList.push(new Marker(ladir, resp[i].LatDeg, resp[i].LatMin, resp[i].LatSec,
+                lodir, resp[i].LongDeg, resp[i].LongMin, resp[i].LongSec, 1, resp[i].ID));
+        }
+        console.log(markersList);
+    }
+};
+xhttp.send();
 
 var routesList=[];
 
@@ -103,22 +127,14 @@ function createMarkerElt(marker){
 	markerElt.textContent=markerEltTxt;
 	markerElt.addEventListener("click",function(){
 		//addMarkerInRoute(chosenRouteNum,markerElt.textContent);
-		if(!routesList[chosenRouteNum-1].markers.includes(marker))addMarkerInRoute(chosenRouteNum,marker);
-		//markerElt.style.display="none";		///// DECOMMENTER POUR QUE LES BALISES CLIQUEES DISPARAISSENT /////
-		/*if(marker.isSelected){
-			markerElt.style.backgroundColor="white";
-			markerElt.style.borderColor="black";
-			markerElt.style.color="black";
-			marker.isSelected=false;
-		}
-		else {
-			markerElt.style.backgroundColor="blue";
-			markerElt.style.borderColor="blue";
-			markerElt.style.color="white";
-			marker.isSelected=true;
-			addMarkerInRoute(chosenRouteNum,markerElt.textContent);
+		if(!routesList[chosenRouteNum-1].markers.includes(marker)){
+			if(routesList[chosenRouteNum-1].isOrdered){
+				marker.order=routesList[chosenRouteNum-1].markers.length+1;
+				console.log(marker.order);
+			}
+			addMarkerInRoute(chosenRouteNum,marker);
 			//markerElt.style.display="none";		///// DECOMMENTER POUR QUE LES BALISES CLIQUEES DISPARAISSENT /////
-		}*/
+		}
 	});
 	return markerElt;
 }
@@ -138,11 +154,15 @@ function createRouteContainer(num){
 	var routeContainerElt=document.createElement("div");
 	routeContainerElt.setAttribute("id","routeContainer"+String(num));
 	routeContainerElt.setAttribute("class","routeContainerElt");
+	var routeNameBlockElt=document.createElement("div");
+	routeNameBlockElt.style.display="flex";
+	routeNameBlockElt.style.flexDirection="row";
 	var routeNameElt=document.createElement("div");
 	routeNameElt.setAttribute("class","routeNameElt");
 	routeNameElt.style.backgroundColor=colorsList[num-1];
 	routeNameElt.textContent="Parcours n°"+String(num);
-	routeContainerElt.appendChild(routeNameElt);
+	routeNameBlockElt.appendChild(routeNameElt);
+	routeContainerElt.appendChild(routeNameBlockElt);
 	document.getElementById("routes").appendChild(routeContainerElt);
 }
 
@@ -156,12 +176,21 @@ function addMarkerInRoute(num,marker) {
 	coords+="\n";
 	coords+=(marker.horizDir+" "+marker.horizDeg+"°"+marker.horizMin+"'"+marker.horizSec+"''");
 	if(!routesList[num-1].markers.includes(marker)) routesList[num-1].markers.push(marker);
-	console.log(routesList[num-1]);
 	newMarker.textContent=coords;
 	newMarker.addEventListener("click",function(){
-		console.log("YO");
 		routesList[num-1].markers.splice(routesList[num-1].markers.indexOf(marker),1)
 		this.style.display="none";
 	});
 	document.getElementById("routeContainer"+String(num)).appendChild(newMarker);
 }
+
+var validRoutesBtn=document.getElementById("validRoutes");
+validRoutesBtn.addEventListener("click", function() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../addRoute.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.onreadystatechange = function() {
+        console.log(this.responseText);
+    }
+    xhttp.send("data=" + JSON.stringify(routesList) + "&");
+});
